@@ -1,5 +1,5 @@
 CXX=g++
-BIN=spdi-solver
+BIN=solver
 CXXFLAGS=-std=c++0x -Wall -pedantic -o $(BIN)
 
 solve:
