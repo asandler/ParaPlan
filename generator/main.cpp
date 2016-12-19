@@ -279,7 +279,9 @@ int main(int argc, char **argv) {
         cout << verticesNamesRemap[r.second[0].first.id] << ", v_" << r.first << "_1, v_" << r.first << "_2" << endl << endl;
     }
 
-    delete v, ver, dir;
+    delete v;
+    delete ver;
+    delete dir;
     
     return 0;
 }

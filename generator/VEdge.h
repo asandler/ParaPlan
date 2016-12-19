@@ -22,10 +22,10 @@ class VEdge {
 public:
     VEdge(VPoint* s, VPoint* a, VPoint* b)
         : start(s)
+        , end(0)
         , left(a)
         , right(b)
         , neighbour(0)
-        , end(0)
     {
         f = (b->x - a->x) / (a->y - b->y) ;
         g = s->y - f * s->x;
