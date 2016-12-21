@@ -1,3 +1,5 @@
 draw/draw
 generator/generator
 solver/solver
+generator/split
+examples/generated/*

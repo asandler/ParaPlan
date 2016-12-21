@@ -188,9 +188,9 @@ int main(int argc, char** argv) {
         window.clear(Color::White);
         window.draw(lines);
 
-    //    for (const auto& text : verticesNumbers) {
-    //        window.draw(text);
-    //    }
+        for (const auto& text : verticesNumbers) {
+            window.draw(text);
+        }
 
         window.display();
     }

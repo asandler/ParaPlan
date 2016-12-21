@@ -80,7 +80,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
         /*
             DIE cycle
         */
-        cout << "DIE-cycle" << endl;
+        //cout << "DIE-cycle" << endl;
         auto im = borders;
         auto answer = make_pair(false, vector<pair<double, double> >(1, im));
 
@@ -100,7 +100,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
         /*
             STAY, EXIT-LEFT, EXIT-RIGHT, EXIT-BOTH cycles
         */
-        cout << "Normal cycle" << endl;
+        //cout << "Normal cycle" << endl;
         double lFin = max(0.0, min(min(borders.first, leftLim), min(borders.second, rightLim)));
         double rFin = min(1.0, max(max(borders.first, leftLim), max(borders.second, rightLim)));
         pair<double, double> finalDomain = make_pair(lFin, rFin);
@@ -125,10 +125,10 @@ bool DFSSignaturesExploration(
     unordered_set<string> visitedCycles = unordered_set<string>(),
     vector<size_t> curResidualPath = vector<size_t>()
 ) {
-    for (size_t i = 0; i < curResidualPath.size(); ++i) {
-        cout << " ";
-    }
-    cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
+    //for (size_t i = 0; i < curResidualPath.size(); ++i) {
+    //    cout << " ";
+    //}
+    //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
 
     if (isFinState(edgeIndex, borders, reachTask)) {
         return true;
@@ -168,7 +168,7 @@ bool DFSSignaturesExploration(
         if (visitedCycles.find(cycleId) != visitedCycles.end()) {
             return false;
         } else {
-            cout << "cycleId = " << cycleId << endl;
+            //cout << "cycleId = " << cycleId << endl;
             visitedCycles.insert(cycleId);
         }
 
@@ -185,7 +185,7 @@ bool DFSSignaturesExploration(
                     return false;
                 }
 
-                cout << "Final image = " << im.first << " " << im.second << endl;
+                //cout << "Final image = " << im.first << " " << im.second << endl;
 
                 vec2 c1 = spdi.EdgesConnections[edgeIndex].second.first;
                 vec2 c2 = spdi.EdgesConnections[edgeIndex].second.second;

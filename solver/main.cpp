@@ -15,20 +15,12 @@ using namespace std;
 
 int main(int argc, char** argv) {
     SPDI spdi;
-//    SPDIReachTask reachTask;
+    SPDIReachTask reachTask;
 
     ReadAndValidateSPDI(argv[1], spdi);
-//    ReadStartAndFinalEdgeParts(argv[2], spdi, reachTask);
-//
-//    for (const auto& rec : reachTask.StartEdgeParts) {
-//        cout << rec.first << " " << rec.second.first << " " << rec.second.second << endl;
-//    }
-//    cout << endl;
-//    for (const auto& rec : reachTask.FinalEdgeParts) {
-//        cout << rec.first << " " << rec.second.first << " " << rec.second.second << endl;
-//    }
-//
-//    cout << SolveReachTask(spdi, reachTask) << endl;
+    ReadStartAndFinalEdgeParts(argv[2], spdi, reachTask);
+
+    cout << SolveReachTask(spdi, reachTask) << endl;
 
     return 0;
 }

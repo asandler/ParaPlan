@@ -5,6 +5,7 @@
 #include <sstream>
 #include <unordered_map>
 #include <unordered_set>
+#include <sys/time.h>
 
 #include "Voronoi.h"
 #include "VPoint.h"
@@ -38,13 +39,13 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    srand(time(0));
-
     Voronoi* v = new Voronoi();
     Vertices* ver = new Vertices();
     Vertices* dir = new Vertices();
 
-    srand(time(NULL));
+    struct timeval time;
+    gettimeofday(&time, NULL);
+    srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
 
     double w = 1000;
     for (int i = 0; i < stoi(argv[1]); i++) {
