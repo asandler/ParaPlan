@@ -1,6 +1,13 @@
 CXX=g++
-BIN=generator
-CXXFLAGS=-std=c++0x -Wall -pedantic -o $(BIN)
+CXXFLAGS=-std=c++0x -Wall -pedantic
 
-solve:
-	$(CXX) $(CXXFLAGS) VPoint.h VParabola.cpp Voronoi.cpp main.cpp
+all: generator task_generator splitter
+
+generator:
+	$(CXX) $(CXXFLAGS) VPoint.h VParabola.cpp Voronoi.cpp main.cpp -o generator
+
+task_generator:
+	$(CXX) $(CXXFLAGS) task_generator.cpp -o task_generator
+
+splitter:
+	$(CXX) $(CXXFLAGS) splitter.cpp -o splitter

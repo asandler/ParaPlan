@@ -1,5 +1,6 @@
 draw/draw
-generator/generator
-solver/solver
-generator/split
 examples/generated/*
+generator/generator
+generator/splitter
+generator/task_generator
+solver/solver

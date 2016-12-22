@@ -17,6 +17,11 @@ int main(int argc, char** argv) {
     SPDI spdi;
     SPDIReachTask reachTask;
 
+    if (argc < 3) {
+        cerr << "Arguments: .spdi file, .task file" << endl;
+        return 1;
+    }
+
     ReadAndValidateSPDI(argv[1], spdi);
     ReadStartAndFinalEdgeParts(argv[2], spdi, reachTask);
 
