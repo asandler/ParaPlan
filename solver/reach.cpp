@@ -54,66 +54,69 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
     const SPDI& spdi,
     const SPDIReachTask reachTask
 ) {
-    const auto badAnswer = make_pair(false, vector<pair<double, double> >(1, make_pair(-1, -2)));
+    const auto res = IterateCycleAndCheckFinalState(cycle, borders, spdi, reachTask);
+    if (res.first) {
+        return make_pair(true, vector<pair<double, double> >(1, res.second));
+    }
 
-    double left1 = SuccPointAMFSigma(borders.first, cycle, 'L', spdi);
-    double left2 = SuccPointAMFSigma(borders.second, cycle, 'L', spdi);
-    double leftA = (left2 - left1) / (borders.second - borders.first);
-    double leftB = left1 - leftA * borders.first;
-    double lim1L = CalcLimitPoint(leftA, leftB, borders.first);
-    double lim1R = CalcLimitPoint(leftA, leftB, borders.second);
+    auto imPrev = borders;
+    auto imSucc = res.second;
+    auto answer = make_pair(false, vector<pair<double, double> >(1, imPrev));
 
-    double right1 = SuccPointAMFSigma(borders.first, cycle, 'R', spdi);
-    double right2 = SuccPointAMFSigma(borders.second, cycle, 'R', spdi);
-    double rightA = (right2 - right1) / (borders.second - borders.first);
-    double rightB = right1 - rightA * borders.first;
-    double lim2L = CalcLimitPoint(rightA, rightB, borders.first);
-    double lim2R = CalcLimitPoint(rightA, rightB, borders.second);
-
-    double leftLim = min(min(lim1L, lim1R), min(lim2L, lim2R));
-    double rightLim = max(max(lim1L, lim1R), max(lim2L, lim2R));
-
-    double imL = max(0.0, min(min(left1, left2), min(right1, right2)));
-    double imR = min(1.0, max(max(left1, left2), max(right1, right2)));
-
-    if (!ImagesIntersect(borders, make_pair(imL, imR))) {
+    while (!ImagesIntersect(imPrev, imSucc)) {
         /*
             DIE cycle
         */
-        //cout << "DIE-cycle" << endl;
-        auto im = borders;
-        auto answer = make_pair(false, vector<pair<double, double> >(1, im));
-
-        while (ValidImage(im)) {
-            const auto res = IterateCycleAndCheckFinalState(cycle, im, spdi, reachTask);
+        while ((!ImagesIntersect(imPrev, imSucc)) && ValidImage(imSucc)) {
+            imPrev = imSucc;
+            const auto res = IterateCycleAndCheckFinalState(cycle, imSucc, spdi, reachTask);
+            //cout << "im = " << res.second.first << " " << res.second.second << endl;
 
             answer.first |= res.first;
             answer.second.push_back(res.second);
 
+            imSucc = res.second;
+
             if (res.first) {
                 return answer;
             }
-
-            im = res.second;
-        }
-    } else {
-        /*
-            STAY, EXIT-LEFT, EXIT-RIGHT, EXIT-BOTH cycles
-        */
-        //cout << "Normal cycle" << endl;
-        double lFin = max(0.0, min(min(borders.first, leftLim), min(borders.second, rightLim)));
-        double rFin = min(1.0, max(max(borders.first, leftLim), max(borders.second, rightLim)));
-        pair<double, double> finalDomain = make_pair(lFin, rFin);
-
-        if (!ValidImage(finalDomain)) {
-            return badAnswer;
         }
 
-        const auto ans = IterateCycleAndCheckFinalState(cycle, finalDomain, spdi, reachTask);
-        return make_pair(ans.first, vector<pair<double, double> >(1, finalDomain));
+        if (!ValidImage(imSucc)) {
+            return answer;
+        }
     }
 
-    return badAnswer;
+    /*
+        STAY, EXIT-LEFT, EXIT-RIGHT, EXIT-BOTH cycles
+    */
+    double left1 = SuccPointAMFSigma(imPrev.first, cycle, 'L', spdi);
+    double left2 = SuccPointAMFSigma(imPrev.second, cycle, 'L', spdi);
+    double leftA = (left2 - left1) / (imPrev.second - imPrev.first);
+    double leftB = left1 - leftA * imPrev.first;
+    double lim1L = CalcLimitPoint(leftA, leftB, imPrev.first);
+    double lim1R = CalcLimitPoint(leftA, leftB, imPrev.second);
+
+    double right1 = SuccPointAMFSigma(imPrev.first, cycle, 'R', spdi);
+    double right2 = SuccPointAMFSigma(imPrev.second, cycle, 'R', spdi);
+    double rightA = (right2 - right1) / (imPrev.second - imPrev.first);
+    double rightB = right1 - rightA * imPrev.first;
+    double lim2L = CalcLimitPoint(rightA, rightB, imPrev.first);
+    double lim2R = CalcLimitPoint(rightA, rightB, imPrev.second);
+
+    double leftLim = min(min(lim1L, lim1R), min(lim2L, lim2R));
+    double rightLim = max(max(lim1L, lim1R), max(lim2L, lim2R));
+
+    double lFin = max(0.0, min(min(imPrev.first, leftLim), min(imPrev.second, rightLim)));
+    double rFin = min(1.0, max(max(imPrev.first, leftLim), max(imPrev.second, rightLim)));
+    pair<double, double> finalDomain = make_pair(lFin, rFin);
+
+    if (!ValidImage(finalDomain)) {
+        return make_pair(false, vector<pair<double, double> >(1, make_pair(-1, -2)));
+    }
+
+    const auto ans = IterateCycleAndCheckFinalState(cycle, finalDomain, spdi, reachTask);
+    return make_pair(ans.first, vector<pair<double, double> >(1, finalDomain));
 }
 
 bool DFSSignaturesExploration(

@@ -33,7 +33,7 @@ void GenerateRandomSPDIReachTask(const string& filename, int seed) {
             vertices.push_back(s.substr(0, s.find(',')));
 
             for (size_t i = 0; i + 1 < vertices.size(); ++i) {
-                edges.push_back(vertices[i] + " " + vertices[i + 1]);
+                edges.push_back(vertices[i] + "-" + vertices[i + 1]);
             }
         }
     }
@@ -68,8 +68,9 @@ void GenerateRandomSPDIReachTask(const string& filename, int seed) {
         }
     }
 
-    cout << "Start:" << endl << edges[edgeIndex1] << " " << min(s1, s2) << " " << max(s1, s2) << endl;
-    cout << "Final:" << endl << edges[edgeIndex2] << " " << min(s3, s4) << " " << max(s3, s4) << endl;
+    cout << "[" << min(s1, s2) << "," << max(s1, s2) << "] ";
+    cout << "[" << min(s3, s4) << "," << max(s3, s4) << "] ";
+    cout << edges[edgeIndex1] << " " << edges[edgeIndex2] << endl;
 }
 
 int main(int argc, char** argv) {
