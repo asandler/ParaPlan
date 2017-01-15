@@ -23,7 +23,7 @@ with region R:
    
    if E is empty
        if no free edges in R
-           return failure
+           return FAILURE
        else // all edges are free, no edge with non-free neighbour
            E = {random edge from R}
 
