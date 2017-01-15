@@ -45,7 +45,7 @@ parameters: number of initial region centers in Voronoi diagram (output SPDI cou
 
 ## task_generator
 
-Takes one random interval of one random edge as a starting set and one random interval of one random edge as a final set.
+Generates random reachability task for given SPDI, taking one random interval of one random edge as a starting set and one random interval of one random edge as a final set.
 
 parameters: .spdi file
 
