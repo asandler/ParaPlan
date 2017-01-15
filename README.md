@@ -19,9 +19,9 @@ Vectors are assigned to each region as following:
 ```
 1) Randomly iterate by all regions
 2) with region R:
-3)    Find all starting points P
-4)    with each starting point P:
-5)        try to take sequence of free edges starting from P, so that it could define an output set for R
+3)    Find all starting edges E (free edge with non-free previous neighbour)
+4)    with each starting edge E:
+5)        try to take sequence of free edges starting from E, so that it could define an output set for R
 6)    if no output set is obtained
 7)        return FAILURE
 8)    else
