@@ -37,6 +37,10 @@ with region R:
 
 If all regions are correctly assigned, an SPDI representation is printed on output, otherwise, nothing is printed.
 
+## task_generator
+
+Takes one random interval of one random edge as a starting set and one random interval of one random edge as a final set.
+
 ## draw
 
 Draws given SPDI file on a plane, with coordinates normalization on SCREEN_HEIGHT and SCREEN_WIDTH constants (hardcoded).
