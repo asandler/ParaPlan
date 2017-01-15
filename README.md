@@ -16,6 +16,7 @@ Each edge in SPDI could be an output edge for at most one region (otherwise, the
 
 Vectors are assigned to each region as following:
 
+```
 1) Randomly iterate by all regions
 2) with region R:
 3)    Find all starting points P
@@ -25,6 +26,7 @@ Vectors are assigned to each region as following:
 7)        return FAILURE
 8)    else
 9)        assign two random vectors between pre-leftmost and post-righmost edge to R
+```
 
 If all regions are correctly assigned, an SPDI representation is printed on output, otherwise, nothing is printed.
 
