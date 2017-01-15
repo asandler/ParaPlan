@@ -17,15 +17,22 @@ Each edge in SPDI could be an output edge for at most one region (otherwise, the
 Vectors are assigned to each region as following:
 
 ```
-1) Randomly iterate by all regions
-2) with region R:
-3)    Find all starting edges E (free edge with non-free previous neighbour)
-4)    with each starting edge E:
-5)        try to take sequence of free edges starting from E, so that it could define an output set for R
-6)    if no output set is obtained
-7)        return FAILURE
-8)    else
-9)        assign two random vectors between pre-leftmost and post-righmost edge to R
+Randomly iterate by all regions
+with region R:
+   find all starting edges E (free edge with non-free previous neighbour)
+   
+   if E is empty
+       if no free edges in R
+           return failure
+       else // all edges are free, no edge with non-free neighbour
+           E = {random edge from R}
+
+   with each starting edge E:
+       try to take sequence of free edges starting from E, so that it could define an output set for R
+   if no output set is obtained
+       return FAILURE
+   else
+       assign two random vectors between pre-leftmost and post-righmost edge to R
 ```
 
 If all regions are correctly assigned, an SPDI representation is printed on output, otherwise, nothing is printed.
