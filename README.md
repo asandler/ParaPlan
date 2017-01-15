@@ -1,12 +1,16 @@
-Based on the works of Gordon J. Pace, Gerardo Schneider and others: http://www.cs.um.edu.mt/~svrg/Tools/SPeeDI/index.html
-
 # spdi-solver
 
 Tool for solving reachability tasks on SPDI (polygonal differential inclusion systems)
 
+Based on the works of Gordon J. Pace, Gerardo Schneider and others: http://www.cs.um.edu.mt/~svrg/Tools/SPeeDI/index.html
+
+How to make it: install SFML for drawer and just type "make" in each directory.
+
 ## solver
 
 Solves a reachability task on SPDI. Given a set *S* of start edge intervals and a set *F* of final edge intervals, tests whether there exist a trajectory starting in *S* and ending in *F*.
+
+parameters: .spdi file, .task file
 
 ## generator
 
@@ -37,10 +41,16 @@ with region R:
 
 If all regions are correctly assigned, an SPDI representation is printed on output, otherwise, nothing is printed.
 
+parameters: number of initial region centers in Voronoi diagram (output SPDI could contain less number of regions, but not more)
+
 ## task_generator
 
 Takes one random interval of one random edge as a starting set and one random interval of one random edge as a final set.
 
+parameters: .spdi file
+
 ## draw
 
 Draws given SPDI file on a plane, with coordinates normalization on SCREEN_HEIGHT and SCREEN_WIDTH constants (hardcoded).
+
+paramters: .spdi file
