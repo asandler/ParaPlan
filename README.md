@@ -14,7 +14,7 @@ parameters: .spdi file, .task file
 
 ## generator
 
-Generates random convex polygonal partitioning of a plane based on Voronoi diagrams. Number of center points in diagram is a parameter. After generation, some regions are pruned if some of their vertices are out of bounds (between 0 and 1000 along each coordinate).
+Generates random SPDI by convex polygonal partitioning of a plane based on Voronoi diagrams. Number of center points in diagram is a parameter. After generation, some regions are pruned if some of their vertices are out of bounds (between 0 and 1000 along each coordinate).
 
 Each edge in SPDI could be an output edge for at most one region (otherwise, there will be a Zeno behavior). Hence, to define a differential inclusion on a given partition, one can assign a set of (sequential) output edges for each region and test that the oriented angle between the pre-leftmost and the post-rightmost edges is positive. If all output edges are correctly set, one can assign two vectors to each region by taking it randomly between the pre-leftmost and post-rightmost edge vectors.
 
