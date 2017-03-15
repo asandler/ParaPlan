@@ -23,7 +23,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
     const SPDIReachTask reachTask
 );
 
-bool DFSSignaturesExploration(
+void DFSSignaturesExploration(
     const size_t edgeIndex,
     const pair<double, double>& borders,
     vector<size_t> curResidualPath,
@@ -33,4 +33,4 @@ bool DFSSignaturesExploration(
     const SPDIReachTask& spdiReachTask
 );
 
-bool SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask);
+void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask);
