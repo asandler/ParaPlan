@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <list>
 
 #include "global.h"
 #include "reach.h"
@@ -7,7 +8,7 @@
 struct DFSData {
     DFSData(
         size_t edgeIndex,
-        const pair<size_t, size_t>& borders,
+        const pair<double, double>& borders,
         const SPDI& spdi,
         const SPDIReachTask& reachTask,
         unordered_set<size_t> visitedEdges = unordered_set<size_t>(),
@@ -15,16 +16,29 @@ struct DFSData {
         vector<size_t> curResidualPath = vector<size_t>()
     )
         : EdgeIndex(edgeIndex)
-        , Borders(make_pair(-2, -1))
+        , Borders(borders)
         , Spdi(spdi)
         , ReachTask(reachTask)
-        , VisitedEdges(visitedEdges)
-        , VisitedCycles(visitedCycles)
-        , CurResidualPath(curResidualPath)
-    {}
+    {
+        VisitedEdges = unordered_set<size_t>();
+        VisitedCycles = unordered_set<string>();
+        CurResidualPath = vector<size_t>();
+
+        for (const auto& edge : visitedEdges) {
+            VisitedEdges.insert(edge);
+        }
+
+        for (const auto& cycle : visitedCycles) {
+            VisitedCycles.insert(cycle);
+        }
+
+        for (const auto& edge : curResidualPath) {
+            CurResidualPath.push_back(edge);
+        }
+    }
 
     size_t EdgeIndex;
-    pair<double, double> Borders;
+    const pair<double, double> Borders;
     const SPDI& Spdi;
     const SPDIReachTask& ReachTask;
     unordered_set<size_t> VisitedEdges;
@@ -32,7 +46,7 @@ struct DFSData {
     vector<size_t> CurResidualPath;
 };
 
-bool isFinState(const size_t edgeIndex, pair<double, double> borders, const SPDIReachTask reachTask) {
+bool isFinState(const size_t edgeIndex, const pair<double, double>& borders, const SPDIReachTask& reachTask) {
     auto it = reachTask.FinalEdgeParts.find(edgeIndex);
 
     if (it == reachTask.FinalEdgeParts.end()) {
@@ -46,7 +60,7 @@ pair<bool, pair<double, double> > IterateCycleAndCheckFinalState(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask reachTask
+    const SPDIReachTask& reachTask
 ) {
     auto im = borders;
 
@@ -81,7 +95,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask reachTask
+    const SPDIReachTask& reachTask
 ) {
     const auto res = IterateCycleAndCheckFinalState(cycle, borders, spdi, reachTask);
     if (res.first) {
@@ -154,14 +168,14 @@ void* DFSSignaturesExploration(void* threadArguments) {
     //}
     //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
 
-    DFSData* threadData = (struct DFSData*)threadArguments;
+    DFSData* threadData = (struct DFSData*) threadArguments;
     const size_t edgeIndex = threadData->EdgeIndex;
     const pair<double, double>& borders = threadData->Borders;
     const SPDI& spdi = threadData->Spdi;
     const SPDIReachTask& reachTask = threadData->ReachTask;
-    unordered_set<size_t> visitedEdges = threadData->VisitedEdges;
-    unordered_set<string> visitedCycles = threadData->VisitedCycles;
-    vector<size_t> curResidualPath = threadData->CurResidualPath;
+    unordered_set<size_t>& visitedEdges = threadData->VisitedEdges;
+    unordered_set<string>& visitedCycles = threadData->VisitedCycles;
+    vector<size_t>& curResidualPath = threadData->CurResidualPath;
 
     if (isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
@@ -172,7 +186,6 @@ void* DFSSignaturesExploration(void* threadArguments) {
     }
 
     if (visitedEdges.find(edgeIndex) != visitedEdges.end()) {
-
         vector<size_t> cycle; //store all edges of cycle in reversed order
         bool inCycle = true;
 
@@ -243,7 +256,6 @@ void* DFSSignaturesExploration(void* threadArguments) {
         }
 
     } else {
-
         visitedEdges.insert(edgeIndex);
         curResidualPath.push_back(edgeIndex);
 
@@ -268,8 +280,11 @@ void* DFSSignaturesExploration(void* threadArguments) {
 }
 
 void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
+    list<DFSData> threadsData;
+
     for (const auto& startEdge : reachTask.StartEdgeParts) {
         DFSData threadData(startEdge.first, startEdge.second, spdi, reachTask);
+        threadsData.push_back(threadData);
 
         pthread_mutex_lock(&FreeThreadsMutex);
 
@@ -277,12 +292,16 @@ void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
             --FreeThreads;
             pthread_mutex_unlock(&FreeThreadsMutex);
 
+            cout << "Creating thread" << endl;
             pthread_t newThreadId;
-            pthread_create(&newThreadId, NULL, DFSSignaturesExploration, (void*) &threadData);
+            cout << threadData.EdgeIndex << " " << threadData.Borders.first << " " << threadData.Borders.second << endl;
+            pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration, (void*) &threadsData.back());
+            cout << "Created thread" << endl;
         } else {
             pthread_mutex_unlock(&FreeThreadsMutex);
+            cout << "Going without thread" << endl;
 
-            DFSSignaturesExploration((void*) &threadData);
+            DFSSignaturesExploration((void*) &threadsData.back());
         }
     }
 }

@@ -7,20 +7,20 @@
 
 using namespace std;
 
-bool isFinState(const size_t edgeIndex, pair<double, double> borders, const SPDIReachTask reachTask);
+bool isFinState(const size_t edgeIndex, const pair<double, double>& borders, const SPDIReachTask& reachTask);
 
 pair<bool, pair<double, double> > IterateCycleAndCheckFinalState(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask reachTask
+    const SPDIReachTask& reachTask
 );
 
 pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask reachTask
+    const SPDIReachTask& reachTask
 );
 
 void DFSSignaturesExploration(
