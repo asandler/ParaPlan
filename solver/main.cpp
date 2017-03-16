@@ -74,6 +74,5 @@ int main(int argc, char** argv) {
     pthread_mutex_destroy(&FreeThreadsMutex);
     pthread_mutex_destroy(&AnswerMutex);
 
-    cout << "Exiting thread (main)" << endl;
     pthread_exit(NULL);
 }

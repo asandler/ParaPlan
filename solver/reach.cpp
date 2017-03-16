@@ -6,13 +6,13 @@
 
 struct DFSData {
     DFSData(
-        size_t edgeIndex,
+        const size_t edgeIndex,
         const pair<double, double>& borders,
         const SPDI& spdi,
         const SPDIReachTask& reachTask,
-        unordered_set<size_t> visitedEdges = unordered_set<size_t>(),
-        unordered_set<string> visitedCycles = unordered_set<string>(),
-        vector<size_t> curResidualPath = vector<size_t>()
+        const unordered_set<size_t>& visitedEdges = unordered_set<size_t>(),
+        const unordered_set<string>& visitedCycles = unordered_set<string>(),
+        const vector<size_t>& curResidualPath = vector<size_t>()
     )
         : EdgeIndex(edgeIndex)
         , Borders(borders)
@@ -177,11 +177,12 @@ void* DFSSignaturesExploration(void* threadArguments) {
     unordered_set<string>& visitedCycles = threadData->VisitedCycles;
     vector<size_t>& curResidualPath = threadData->CurResidualPath;
 
-    if (isFinState(edgeIndex, borders, reachTask)) {
+    if (Answer || isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
         Answer = true;
-        cout << "1" << endl;
         pthread_mutex_unlock(&AnswerMutex);
+
+        cout << "1" << endl;
         pthread_exit(NULL);
     }
 
@@ -230,8 +231,9 @@ void* DFSSignaturesExploration(void* threadArguments) {
         if (res.first) {
             pthread_mutex_lock(&AnswerMutex);
             Answer = true;
-            cout << "1" << endl;
             pthread_mutex_unlock(&AnswerMutex);
+
+            cout << "1" << endl;
             pthread_exit(NULL);
         } else {
             for (const auto& im : res.second) {
@@ -274,24 +276,23 @@ void* DFSSignaturesExploration(void* threadArguments) {
     ++FreeThreads;
     pthread_mutex_unlock(&FreeThreadsMutex);
 
+    delete threadData;
     pthread_exit(NULL);
 }
 
 void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
+    size_t curStartEdgeIndex = 0, edgePartsSize = reachTask.StartEdgeParts.size();
     for (const auto& startEdge : reachTask.StartEdgeParts) {
         pthread_mutex_lock(&FreeThreadsMutex);
 
-        if (FreeThreads > 0) {
+        if (FreeThreads > 0 && ++curStartEdgeIndex != edgePartsSize) {
             --FreeThreads;
             pthread_mutex_unlock(&FreeThreadsMutex);
 
             pthread_t newThreadId;
-
-            cout << "Creating thread" << endl;
             pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration, new DFSData(startEdge.first, startEdge.second, spdi, reachTask));
         } else {
             pthread_mutex_unlock(&FreeThreadsMutex);
-            cout << "Going without thread" << endl;
 
             DFSSignaturesExploration(new DFSData(startEdge.first, startEdge.second, spdi, reachTask));
         }
