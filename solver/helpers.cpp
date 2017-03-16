@@ -1,6 +1,5 @@
 #include <stdexcept>
 
-#include "global.h"
 #include "helpers.h"
 
 double OrientedAngle(const vec2& a, const vec2& b) {

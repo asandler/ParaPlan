@@ -2,7 +2,6 @@
 #include <iostream>
 #include <list>
 
-#include "global.h"
 #include "reach.h"
 
 struct DFSData {
@@ -168,7 +167,8 @@ void* DFSSignaturesExploration(void* threadArguments) {
     //}
     //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
 
-    DFSData* threadData = (struct DFSData*) threadArguments;
+    DFSData* threadData = (DFSData*) threadArguments;
+
     const size_t edgeIndex = threadData->EdgeIndex;
     const pair<double, double>& borders = threadData->Borders;
     const SPDI& spdi = threadData->Spdi;
@@ -204,7 +204,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
             /*
                 cycle ends not in current residual path, forbidden
             */
-            pthread_exit(NULL);
+            return NULL;
         }
 
         vector<size_t> sortedCycle(cycle);
@@ -216,7 +216,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
         }
 
         if (visitedCycles.find(cycleId) != visitedCycles.end()) {
-            pthread_exit(NULL);
+            return NULL;
         } else {
             //cout << "cycleId = " << cycleId << endl;
             visitedCycles.insert(cycleId);
@@ -236,7 +236,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
         } else {
             for (const auto& im : res.second) {
                 if (!ValidImage(im)) {
-                    pthread_exit(NULL);
+                    return NULL;
                 }
 
                 //cout << "Final image = " << im.first << " " << im.second << endl;
@@ -248,8 +248,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
                     pair<double, double> image = SuccInt(im.first, im.second, spdi.Edges[edgeIndex], spdi.Edges[nextEdge], c1, c2);
 
                     if (ValidImage(image)) {
-                        DFSData threadData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles);
-                        DFSSignaturesExploration((void*) &threadData);
+                        DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles));
                     }
                 }
             }
@@ -266,8 +265,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
             pair<double, double> image = SuccInt(borders.first, borders.second, spdi.Edges[edgeIndex], spdi.Edges[nextEdge], c1, c2);
 
             if (ValidImage(image)) {
-                DFSData threadData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath);
-                DFSSignaturesExploration((void*) &threadData);
+                DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath));
             }
         }
     }
@@ -280,28 +278,22 @@ void* DFSSignaturesExploration(void* threadArguments) {
 }
 
 void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
-    list<DFSData> threadsData;
-
     for (const auto& startEdge : reachTask.StartEdgeParts) {
-        DFSData threadData(startEdge.first, startEdge.second, spdi, reachTask);
-        threadsData.push_back(threadData);
-
         pthread_mutex_lock(&FreeThreadsMutex);
 
-        if (FreeThreads < ThreadsNumber && FreeThreads > 0) {
+        if (FreeThreads > 0) {
             --FreeThreads;
             pthread_mutex_unlock(&FreeThreadsMutex);
 
-            cout << "Creating thread" << endl;
             pthread_t newThreadId;
-            cout << threadData.EdgeIndex << " " << threadData.Borders.first << " " << threadData.Borders.second << endl;
-            pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration, (void*) &threadsData.back());
-            cout << "Created thread" << endl;
+
+            cout << "Creating thread" << endl;
+            pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration, new DFSData(startEdge.first, startEdge.second, spdi, reachTask));
         } else {
             pthread_mutex_unlock(&FreeThreadsMutex);
             cout << "Going without thread" << endl;
 
-            DFSSignaturesExploration((void*) &threadsData.back());
+            DFSSignaturesExploration(new DFSData(startEdge.first, startEdge.second, spdi, reachTask));
         }
     }
 }

@@ -3,7 +3,7 @@
 #include <getopt.h>
 #include <stdlib.h>
 
-#include "global.h"
+#include "globals.h"
 #include "helpers.h"
 #include "spdi_io.h"
 #include "succ.h"
@@ -25,9 +25,6 @@ void PrintUsage() {
 }
 
 int main(int argc, char** argv) {
-    SPDI spdi;
-    SPDIReachTask reachTask;
-
     char* spdiPath = NULL;
     char* spdiReachTaskPath = NULL;
 
@@ -63,8 +60,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    ReadAndValidateSPDI(spdiPath, spdi);
-    ReadStartAndFinalEdgeParts(spdiReachTaskPath, spdi, reachTask);
+    ReadAndValidateSPDI(spdiPath, Spdi);
+    ReadStartAndFinalEdgeParts(spdiReachTaskPath, Spdi, ReachTask);
 
     pthread_mutex_init(&FreeThreadsMutex, NULL);
     pthread_mutex_init(&AnswerMutex, NULL);
@@ -72,10 +69,11 @@ int main(int argc, char** argv) {
     pthread_attr_init(&ThreadAttributes);
     pthread_attr_setdetachstate(&ThreadAttributes, PTHREAD_CREATE_DETACHED);
 
-    SolveReachTask(spdi, reachTask);
+    SolveReachTask(Spdi, ReachTask);
 
     pthread_mutex_destroy(&FreeThreadsMutex);
     pthread_mutex_destroy(&AnswerMutex);
 
+    cout << "Exiting thread (main)" << endl;
     pthread_exit(NULL);
 }

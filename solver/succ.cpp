@@ -1,7 +1,6 @@
 #include <stdexcept>
 #include <iostream>
 
-#include "global.h"
 #include "succ.h"
 
 double SuccPointAMF(const double x, const Edge& e1, const Edge& e2, const vec2& c) {

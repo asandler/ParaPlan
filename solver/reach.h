@@ -4,6 +4,7 @@
 
 #include "succ.h"
 #include "helpers.h"
+#include "globals.h"
 
 using namespace std;
 

@@ -3,7 +3,6 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "global.h"
 #include "spdi_io.h"
 
 void ReadAndValidateSPDI(const string& filename, SPDI& spdi) {
