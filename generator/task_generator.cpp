@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void GenerateRandomSPDIReachTask(const string& filename, int seed) {
+void GenerateRandomSPDIReachTask(const string& filename, const size_t startEdgesCount, const size_t finalEdgesCount) {
     vector<string> edges;
 
     string s;
@@ -40,45 +40,58 @@ void GenerateRandomSPDIReachTask(const string& filename, int seed) {
 
     spdiFile.close();
 
-    //struct timeval time;
-    //gettimeofday(&time, NULL);
-    //srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
-    srand(seed);
+    cout << "Start:" << endl;
 
-    double s1 = rand() * 1.0 / RAND_MAX;
-    double s2 = rand() * 1.0 / RAND_MAX;
-    double s3 = rand() * 1.0 / RAND_MAX;
-    double s4 = rand() * 1.0 / RAND_MAX;
-    size_t edgeIndex1 = rand() % edges.size();
-    size_t edgeIndex2 = rand() % edges.size();
+    for (size_t i = 0; i < startEdgesCount; ++i) {
+        double s1 = rand() * 1.0 / RAND_MAX;
+        double s2 = rand() * 1.0 / RAND_MAX;
+        size_t edgeIndex1 = rand() % edges.size();
 
-    if (max(s1, s2) - min(s1, s2) < 0.01) {
-        if (max(s1, s2) < 0.9) {
-            s1 += 0.1;
-        } else {
-            s2 -= 0.1;
+        if (max(s1, s2) - min(s1, s2) < 0.01) {
+            if (max(s1, s2) < 0.9) {
+                s1 += 0.1;
+            } else {
+                s2 -= 0.1;
+            }
         }
+
+        cout << edges[edgeIndex1] << " " << min(s1, s2) << " " << max(s1, s2) << endl;
     }
 
-    if (max(s3, s4) - min(s3, s4) < 0.01) {
-        if (max(s3, s4) < 0.9) {
-            s3 += 0.1;
-        } else {
-            s4 -= 0.1;
-        }
-    }
+    cout << "Final:" << endl;
 
-    cout << "Start:" << endl << edges[edgeIndex1] << " " << min(s1, s2) << " " << max(s1, s2) << endl;
-    cout << "Final:" << endl << edges[edgeIndex2] << " " << min(s3, s4) << " " << max(s3, s4) << endl;
+    for (size_t i = 0; i < finalEdgesCount; ++i) {
+        double s1 = rand() * 1.0 / RAND_MAX;
+        double s2 = rand() * 1.0 / RAND_MAX;
+        size_t edgeIndex1 = rand() % edges.size();
+
+        if (max(s1, s2) - min(s1, s2) < 0.01) {
+            if (max(s1, s2) < 0.9) {
+                s1 += 0.1;
+            } else {
+                s2 -= 0.1;
+            }
+        }
+
+        cout << edges[edgeIndex1] << " " << min(s1, s2) << " " << max(s1, s2) << endl;
+    }
 }
 
 int main(int argc, char** argv) {
-    if (argc < 3) {
-        cerr << "Arguments needed: .spdi file, seed" << endl;
+    if (argc < 4) {
+        cerr << "Arguments needed: .spdi file, start edges count, final edges count, seed (optional, default = milliseconds from midnight)" << endl;
         return 1;
     }
 
-    GenerateRandomSPDIReachTask(argv[1], atoi(argv[2]));
+    if (argc == 4) {
+        struct timeval time;
+        gettimeofday(&time, NULL);
+        srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
+    } else {
+        srand(atoi(argv[2]));
+    }
+
+    GenerateRandomSPDIReachTask(argv[1], atoi(argv[2]), atoi(argv[3]));
 
     return 0;
 }
