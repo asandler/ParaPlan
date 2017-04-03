@@ -166,6 +166,9 @@ void* DFSSignaturesExploration(void* threadArguments) {
     //    cout << " ";
     //}
     //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
+    if (Answer) {
+        pthread_exit(NULL);
+    }
 
     DFSData* threadData = (DFSData*) threadArguments;
 
@@ -177,12 +180,12 @@ void* DFSSignaturesExploration(void* threadArguments) {
     unordered_set<string>& visitedCycles = threadData->VisitedCycles;
     vector<size_t>& curResidualPath = threadData->CurResidualPath;
 
-    if (Answer || isFinState(edgeIndex, borders, reachTask)) {
+    if (isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
         Answer = true;
+        cout << "1" << endl;
         pthread_mutex_unlock(&AnswerMutex);
 
-        cout << "1" << endl;
         pthread_exit(NULL);
     }
 

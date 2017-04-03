@@ -12,7 +12,7 @@ void GenerateRandomSPDIReachTask(const string& filename, const size_t startEdges
     string s;
     char state = 'n';
 
-    ifstream spdiFile(filename);
+    ifstream spdiFile(filename.c_str());
 
     while (!spdiFile.eof()) {
         getline(spdiFile, s);
