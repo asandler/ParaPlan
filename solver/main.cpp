@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
     pthread_mutex_init(&AnswerMutex, NULL);
 
     pthread_attr_init(&ThreadAttributes);
-    pthread_attr_setdetachstate(&ThreadAttributes, PTHREAD_CREATE_DETACHED);
+    pthread_attr_setdetachstate(&ThreadAttributes, PTHREAD_CREATE_JOINABLE);
 
     SolveReachTask(Spdi, ReachTask);
 

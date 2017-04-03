@@ -33,3 +33,41 @@ $ paste answers_3 answers_4 | sort | uniq -c
      59 0       1
      44 1       0
     273 1       1
+
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 1
+0
+
+real    0m5.706s
+user    0m9.057s
+sys     0m8.273s
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 2
+0
+
+real    0m2.612s
+user    0m3.780s
+sys     0m3.796s
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 3
+0
+
+real    0m10.269s
+user    0m16.617s
+sys     0m14.529s
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 4
+0
+
+real    0m2.450s
+user    0m3.464s
+sys     0m3.344s
+
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 5
+0
+
+real    0m31.425s
+user    0m51.639s
+sys     0m42.303s
+asandler@Vostro-3300:~/prog/spdi/solver$ time ./solver --spdi ../examples/random_70.spdi --task tmp --threads 6
+0
+
+real    0m7.373s
+user    0m11.137s
+sys     0m10.365s
