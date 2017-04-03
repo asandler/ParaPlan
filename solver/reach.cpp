@@ -182,8 +182,10 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
     if (isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
-        Answer = true;
-        cout << "1" << endl;
+        if (!Answer) {
+            Answer = true;
+            cout << "1" << endl;
+        }
         pthread_mutex_unlock(&AnswerMutex);
 
         pthread_exit(NULL);
@@ -233,10 +235,12 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
         if (res.first) {
             pthread_mutex_lock(&AnswerMutex);
-            Answer = true;
+            if (!Answer) {
+                Answer = true;
+                cout << "1" << endl;
+            }
             pthread_mutex_unlock(&AnswerMutex);
 
-            cout << "1" << endl;
             pthread_exit(NULL);
         } else {
             for (const auto& im : res.second) {
@@ -248,12 +252,26 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
                 vec2 c1 = spdi.EdgesConnections[edgeIndex].second.first;
                 vec2 c2 = spdi.EdgesConnections[edgeIndex].second.second;
+                size_t nextEdgeIndex = 0, nextEdgesSize = spdi.EdgesConnections[edgeIndex].first.size();
 
                 for (const auto& nextEdge : spdi.EdgesConnections[edgeIndex].first) {
                     pair<double, double> image = SuccInt(im.first, im.second, spdi.Edges[edgeIndex], spdi.Edges[nextEdge], c1, c2);
 
                     if (ValidImage(image)) {
-                        DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles));
+                        pthread_mutex_lock(&FreeThreadsMutex);
+
+                        if (FreeThreads > 0 && ++nextEdgeIndex != nextEdgesSize) {
+                            --FreeThreads;
+                            pthread_mutex_unlock(&FreeThreadsMutex);
+
+                            pthread_t newThreadId;
+                            pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration,
+                                    new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles));
+                        } else {
+                            pthread_mutex_unlock(&FreeThreadsMutex);
+
+                            DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles));
+                        }
                     }
                 }
             }
@@ -265,12 +283,26 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
         vec2 c1 = spdi.EdgesConnections[edgeIndex].second.first;
         vec2 c2 = spdi.EdgesConnections[edgeIndex].second.second;
+        size_t nextEdgeIndex = 0, nextEdgesSize = spdi.EdgesConnections[edgeIndex].first.size();
 
         for (const auto& nextEdge : spdi.EdgesConnections[edgeIndex].first) {
             pair<double, double> image = SuccInt(borders.first, borders.second, spdi.Edges[edgeIndex], spdi.Edges[nextEdge], c1, c2);
 
             if (ValidImage(image)) {
-                DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath));
+                pthread_mutex_lock(&FreeThreadsMutex);
+
+                if (FreeThreads > 0 && ++nextEdgeIndex != nextEdgesSize) {
+                    --FreeThreads;
+                    pthread_mutex_unlock(&FreeThreadsMutex);
+
+                    pthread_t newThreadId;
+                    pthread_create(&newThreadId, &ThreadAttributes, DFSSignaturesExploration,
+                            new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath));
+                } else {
+                    pthread_mutex_unlock(&FreeThreadsMutex);
+
+                    DFSSignaturesExploration(new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath));
+                }
             }
         }
     }
