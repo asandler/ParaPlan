@@ -3,6 +3,7 @@
 # $4 - spdi file
 # $5 - timeout (in seconds)
 
+rm -rf tests
 mkdir -p tests
 
 for i in $(seq $1); do
