@@ -6,10 +6,10 @@
 pair <double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, const vec2& c) {
     //cout << "SuccPointAMF: e1(start, dir) = (" << e1.Start.x << ", " << e1.Start.y << "), (" << e1.Dir.x << ", " << e1.Dir.y << ")" << endl;
     //cout << "SuccPointAMF: e2(start, dir) = (" << e2.Start.x << ", " << e2.Start.y << "), (" << e2.Dir.x << ", " << e2.Dir.y << ")" << endl;
-    bool isImaginary = false;
+    bool isReal = true;
 
     if (OrientedAngle(((e2.Start + e2.Dir * 0.5) - (e1.Start + e1.Dir * 0.5)), e2.Dir) * OrientedAngle(c, e2.Dir) < 0) {
-        isImaginary = true;
+        isReal = false;
     }
 
     vec2 cRot(c.y, -c.x);
@@ -27,7 +27,7 @@ pair <double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2,
     double alpha = prod1 / prod2;
     double beta = ((e1.Start - e2.Start) * cRot) / prod2;
 
-    return make_pair(alpha * x + beta, isImaginary);
+    return make_pair(alpha * x + beta, isReal);
 }
 
 pair<double, double> SuccInt(const double x1, const double x2, const Edge& e1, const Edge& e2, const vec2& c1, const vec2& c2) {
@@ -75,24 +75,20 @@ double SuccPointAMFSigma(
     const char type,
     const SPDI& spdi
 ) {
-    pair<double, bool> ans = make_pair(x, true);
+    double ans = x;
 
     for (size_t i = 0; i < sigma.size() - 1; ++i) {
         if (type == 'R') { //right vector stored in first field of pair
-            ans = SuccPointAMF(ans.first, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.first);
+            ans = SuccInt(ans, ans, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.first, spdi.EdgesConnections[sigma[i]].second.first).first;
         } else if (type == 'L') {
-            ans = SuccPointAMF(ans.first, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.second);
+            ans = SuccInt(ans, ans, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.second, spdi.EdgesConnections[sigma[i]].second.second).first;
         } else {
             throw logic_error("Unknown successor type");
         }
 
-        if (!ans.second) {
-            throw logic_error("Can't calculate sigma-successor");
-        }
-
-        ans.first = min(1.0, ans.first);
-        ans.first = max(0.0, ans.first);
+        ans = min(1.0, ans);
+        ans = max(0.0, ans);
     }
 
-    return ans.first;
+    return ans;
 }
