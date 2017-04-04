@@ -112,7 +112,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
         while ((!ImagesIntersect(imPrev, imSucc)) && ValidImage(imSucc)) {
             imPrev = imSucc;
             const auto res = IterateCycleAndCheckFinalState(cycle, imSucc, spdi, reachTask);
-            cout << "im = " << res.second.first << " " << res.second.second << endl;
+            //cout << "im = " << res.second.first << " " << res.second.second << endl;
 
             answer.first |= res.first;
             answer.second.push_back(res.second);
@@ -176,10 +176,10 @@ void* DFSSignaturesExploration(void* threadArguments) {
     unordered_set<string>& visitedCycles = threadData->VisitedCycles;
     vector<size_t>& curResidualPath = threadData->CurResidualPath;
 
-    for (size_t i = 0; i < curResidualPath.size(); ++i) {
-        cout << " ";
-    }
-    cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
+    //for (size_t i = 0; i < curResidualPath.size(); ++i) {
+    //    cout << " ";
+    //}
+    //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
 
     if (isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
@@ -222,7 +222,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
         if (visitedCycles.find(cycleId) != visitedCycles.end()) {
             return NULL;
         } else {
-            cout << "cycleId = " << cycleId << endl;
+            //cout << "cycleId = " << cycleId << endl;
             visitedCycles.insert(cycleId);
         }
 
@@ -243,7 +243,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
                     return NULL;
                 }
 
-                cout << "Final image = " << im.first << " " << im.second << endl;
+                //cout << "Final image = " << im.first << " " << im.second << endl;
 
                 vec2 c1 = spdi.EdgesConnections[edgeIndex].second.first;
                 vec2 c2 = spdi.EdgesConnections[edgeIndex].second.second;
