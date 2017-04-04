@@ -112,7 +112,7 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
         while ((!ImagesIntersect(imPrev, imSucc)) && ValidImage(imSucc)) {
             imPrev = imSucc;
             const auto res = IterateCycleAndCheckFinalState(cycle, imSucc, spdi, reachTask);
-            //cout << "im = " << res.second.first << " " << res.second.second << endl;
+            cout << "im = " << res.second.first << " " << res.second.second << endl;
 
             answer.first |= res.first;
             answer.second.push_back(res.second);
@@ -162,10 +162,6 @@ pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
 }
 
 void* DFSSignaturesExploration(void* threadArguments) {
-    //for (size_t i = 0; i < curResidualPath.size(); ++i) {
-    //    cout << " ";
-    //}
-    //cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
     if (Answer) {
         return NULL;
     }
@@ -179,6 +175,11 @@ void* DFSSignaturesExploration(void* threadArguments) {
     unordered_set<size_t>& visitedEdges = threadData->VisitedEdges;
     unordered_set<string>& visitedCycles = threadData->VisitedCycles;
     vector<size_t>& curResidualPath = threadData->CurResidualPath;
+
+    for (size_t i = 0; i < curResidualPath.size(); ++i) {
+        cout << " ";
+    }
+    cout << edgeIndex << "\t" << spdi.EdgeIdMap[edgeIndex] << ", (" << borders.first << ":" << borders.second << ")" << endl;
 
     if (isFinState(edgeIndex, borders, reachTask)) {
         pthread_mutex_lock(&AnswerMutex);
@@ -221,7 +222,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
         if (visitedCycles.find(cycleId) != visitedCycles.end()) {
             return NULL;
         } else {
-            //cout << "cycleId = " << cycleId << endl;
+            cout << "cycleId = " << cycleId << endl;
             visitedCycles.insert(cycleId);
         }
 
@@ -242,7 +243,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
                     return NULL;
                 }
 
-                //cout << "Final image = " << im.first << " " << im.second << endl;
+                cout << "Final image = " << im.first << " " << im.second << endl;
 
                 vec2 c1 = spdi.EdgesConnections[edgeIndex].second.first;
                 vec2 c2 = spdi.EdgesConnections[edgeIndex].second.second;
@@ -255,13 +256,12 @@ void* DFSSignaturesExploration(void* threadArguments) {
                     if (ValidImage(image)) {
                         pthread_mutex_lock(&FreeThreadsMutex);
 
-                        if (FreeThreads > 0 && ++nextEdgeIndex != nextEdgesSize) {
+                        if ((FreeThreads > 0) && (++nextEdgeIndex != nextEdgesSize)) {
                             --FreeThreads;
-                            pthread_mutex_unlock(&FreeThreadsMutex);
-
                             threadIds.push_back(0);
                             pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
                                     new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles));
+                            pthread_mutex_unlock(&FreeThreadsMutex);
                         } else {
                             pthread_mutex_unlock(&FreeThreadsMutex);
 
@@ -272,6 +272,9 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
                 for (const auto& threadId : threadIds) {
                     pthread_join(threadId, NULL);
+                    pthread_mutex_lock(&FreeThreadsMutex);
+                    ++FreeThreads;
+                    pthread_mutex_unlock(&FreeThreadsMutex);
                 }
             }
         }
@@ -291,13 +294,12 @@ void* DFSSignaturesExploration(void* threadArguments) {
             if (ValidImage(image)) {
                 pthread_mutex_lock(&FreeThreadsMutex);
 
-                if (FreeThreads > 0 && ++nextEdgeIndex != nextEdgesSize) {
+                if ((FreeThreads > 0) && (++nextEdgeIndex != nextEdgesSize)) {
                     --FreeThreads;
-                    pthread_mutex_unlock(&FreeThreadsMutex);
-
                     threadIds.push_back(0);
                     pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
                             new DFSData(nextEdge, image, spdi, reachTask, visitedEdges, visitedCycles, curResidualPath));
+                    pthread_mutex_unlock(&FreeThreadsMutex);
                 } else {
                     pthread_mutex_unlock(&FreeThreadsMutex);
 
@@ -308,12 +310,11 @@ void* DFSSignaturesExploration(void* threadArguments) {
 
         for (const auto& threadId : threadIds) {
             pthread_join(threadId, NULL);
+            pthread_mutex_lock(&FreeThreadsMutex);
+            ++FreeThreads;
+            pthread_mutex_unlock(&FreeThreadsMutex);
         }
     }
-
-    pthread_mutex_lock(&FreeThreadsMutex);
-    ++FreeThreads;
-    pthread_mutex_unlock(&FreeThreadsMutex);
 
     delete threadData;
     return NULL;
@@ -325,13 +326,12 @@ void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
     for (const auto& startEdge : reachTask.StartEdgeParts) {
         pthread_mutex_lock(&FreeThreadsMutex);
 
-        if (FreeThreads > 0 && ++curStartEdgeIndex != edgePartsSize) {
+        if ((FreeThreads > 0) && (++curStartEdgeIndex != edgePartsSize)) {
             --FreeThreads;
-            pthread_mutex_unlock(&FreeThreadsMutex);
-
             threadIds.push_back(0);
             pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
                     new DFSData(startEdge.first, startEdge.second, spdi, reachTask));
+            pthread_mutex_unlock(&FreeThreadsMutex);
         } else {
             pthread_mutex_unlock(&FreeThreadsMutex);
 
@@ -341,6 +341,9 @@ void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
 
     for (const auto& threadId : threadIds) {
         pthread_join(threadId, NULL);
+        pthread_mutex_lock(&FreeThreadsMutex);
+        ++FreeThreads;
+        pthread_mutex_unlock(&FreeThreadsMutex);
     }
 
     cout << (Answer ? 1 : 0) << endl;
