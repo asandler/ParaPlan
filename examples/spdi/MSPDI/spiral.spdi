@@ -1,0 +1,350 @@
+* Created by the perl mspdi library from ../examples/spiral.mspdi
+
+
+Points:
+
+P_0_0. -100.000000, -100.000000
+P_1_0. -66.666667, -100.000000
+P_2_0. -33.333333, -100.000000
+P_3_0. 0.000000, -100.000000
+P_4_0. 33.333333, -100.000000
+P_5_0. 66.666667, -100.000000
+P_6_0. 100.000000, -100.000000
+P_0_1. -100.000000, -66.666667
+P_1_1. -66.666667, -66.666667
+P_2_1. -33.333333, -66.666667
+P_3_1. 0.000000, -66.666667
+P_4_1. 33.333333, -66.666667
+P_5_1. 66.666667, -66.666667
+P_6_1. 100.000000, -66.666667
+P_0_2. -100.000000, -33.333333
+P_1_2. -66.666667, -33.333333
+P_2_2. -33.333333, -33.333333
+P_3_2. 0.000000, -33.333333
+P_4_2. 33.333333, -33.333333
+P_5_2. 66.666667, -33.333333
+P_6_2. 100.000000, -33.333333
+P_0_3. -100.000000, 0.000000
+P_1_3. -66.666667, 0.000000
+P_2_3. -33.333333, 0.000000
+P_3_3. 0.000000, 0.000000
+P_4_3. 33.333333, 0.000000
+P_5_3. 66.666667, 0.000000
+P_6_3. 100.000000, 0.000000
+P_0_4. -100.000000, 33.333333
+P_1_4. -66.666667, 33.333333
+P_2_4. -33.333333, 33.333333
+P_3_4. 0.000000, 33.333333
+P_4_4. 33.333333, 33.333333
+P_5_4. 66.666667, 33.333333
+P_6_4. 100.000000, 33.333333
+P_0_5. -100.000000, 66.666667
+P_1_5. -66.666667, 66.666667
+P_2_5. -33.333333, 66.666667
+P_3_5. 0.000000, 66.666667
+P_4_5. 33.333333, 66.666667
+P_5_5. 66.666667, 66.666667
+P_6_5. 100.000000, 66.666667
+P_0_6. -100.000000, 100.000000
+P_1_6. -66.666667, 100.000000
+P_2_6. -33.333333, 100.000000
+P_3_6. 0.000000, 100.000000
+P_4_6. 33.333333, 100.000000
+P_5_6. 66.666667, 100.000000
+P_6_6. 100.000000, 100.000000
+
+Vectors:
+
+Vl_0_0_up. -54.833333, 58.333333
+Vr_0_0_up. -57.166667, 58.333333
+Vl_0_0_down. -39.166667, 41.666667
+Vr_0_0_down. -40.833333, 41.666667
+Vl_1_0_up. -55.833333, 26.000000
+Vr_1_0_up. -57.500000, 25.333333
+Vl_1_0_down. -40.166667, 9.333333
+Vr_1_0_down. -41.166667, 8.666667
+Vl_2_0_up. -56.833333, -6.333333
+Vr_2_0_up. -57.833333, -7.666667
+Vl_2_0_down. -41.166667, -23.000000
+Vr_2_0_down. -41.500000, -24.333333
+Vl_3_0_up. -57.833333, -38.666667
+Vr_3_0_up. -58.166667, -40.666667
+Vl_3_0_down. -42.166667, -55.333333
+Vr_3_0_down. -41.833333, -57.333333
+Vl_4_0_up. -58.833333, -71.000000
+Vr_4_0_up. -58.500000, -73.666667
+Vl_4_0_down. -43.166667, -87.666667
+Vr_4_0_down. -42.166667, -90.333333
+Vl_5_0_up. -59.833333, -103.333333
+Vr_5_0_up. -58.833333, -106.666667
+Vl_5_0_down. -44.166667, -120.000000
+Vr_5_0_down. -42.500000, -123.333333
+Vl_0_1_up. -22.500000, 57.333333
+Vr_0_1_up. -24.166667, 58.000000
+Vl_0_1_down. -6.833333, 40.666667
+Vr_0_1_down. -7.833333, 41.333333
+Vl_1_1_up. -23.500000, 25.000000
+Vr_1_1_up. -24.500000, 25.000000
+Vl_1_1_down. -7.833333, 8.333333
+Vr_1_1_down. -8.166667, 8.333333
+Vl_2_1_up. -24.500000, -7.333333
+Vr_2_1_up. -24.833333, -8.000000
+Vl_2_1_down. -8.833333, -24.000000
+Vr_2_1_down. -8.500000, -24.666667
+Vl_3_1_up. -25.500000, -39.666667
+Vr_3_1_up. -25.166667, -41.000000
+Vl_3_1_down. -9.833333, -56.333333
+Vr_3_1_down. -8.833333, -57.666667
+Vl_4_1_up. -26.500000, -72.000000
+Vr_4_1_up. -25.500000, -74.000000
+Vl_4_1_down. -10.833333, -88.666667
+Vr_4_1_down. -9.166667, -90.666667
+Vl_5_1_up. -27.500000, -104.333333
+Vr_5_1_up. -25.833333, -107.000000
+Vl_5_1_down. -11.833333, -121.000000
+Vr_5_1_down. -9.500000, -123.666667
+Vl_0_2_up. 9.833333, 56.333333
+Vr_0_2_up. 8.833333, 57.666667
+Vl_0_2_down. 25.500000, 39.666667
+Vr_0_2_down. 25.166667, 41.000000
+Vl_1_2_up. 8.833333, 24.000000
+Vr_1_2_up. 8.500000, 24.666667
+Vl_1_2_down. 24.500000, 7.333333
+Vr_1_2_down. 24.833333, 8.000000
+Vl_2_2_up. 7.833333, -8.333333
+Vr_2_2_up. 8.166667, -8.333333
+Vl_2_2_down. 23.500000, -25.000000
+Vr_2_2_down. 24.500000, -25.000000
+Vl_3_2_up. 6.833333, -40.666667
+Vr_3_2_up. 7.833333, -41.333333
+Vl_3_2_down. 22.500000, -57.333333
+Vr_3_2_down. 24.166667, -58.000000
+Vl_4_2_up. 5.833333, -73.000000
+Vr_4_2_up. 7.500000, -74.333333
+Vl_4_2_down. 21.500000, -89.666667
+Vr_4_2_down. 23.833333, -91.000000
+Vl_5_2_up. 4.833333, -105.333333
+Vr_5_2_up. 7.166667, -107.333333
+Vl_5_2_down. 20.500000, -122.000000
+Vr_5_2_down. 23.500000, -124.000000
+Vl_0_3_up. 42.166667, 55.333333
+Vr_0_3_up. 41.833333, 57.333333
+Vl_0_3_down. 57.833333, 38.666667
+Vr_0_3_down. 58.166667, 40.666667
+Vl_1_3_up. 41.166667, 23.000000
+Vr_1_3_up. 41.500000, 24.333333
+Vl_1_3_down. 56.833333, 6.333333
+Vr_1_3_down. 57.833333, 7.666667
+Vl_2_3_up. 40.166667, -9.333333
+Vr_2_3_up. 41.166667, -8.666667
+Vl_2_3_down. 55.833333, -26.000000
+Vr_2_3_down. 57.500000, -25.333333
+Vl_3_3_up. 39.166667, -41.666667
+Vr_3_3_up. 40.833333, -41.666667
+Vl_3_3_down. 54.833333, -58.333333
+Vr_3_3_down. 57.166667, -58.333333
+Vl_4_3_up. 38.166667, -74.000000
+Vr_4_3_up. 40.500000, -74.666667
+Vl_4_3_down. 53.833333, -90.666667
+Vr_4_3_down. 56.833333, -91.333333
+Vl_5_3_up. 37.166667, -106.333333
+Vr_5_3_up. 40.166667, -107.666667
+Vl_5_3_down. 52.833333, -123.000000
+Vr_5_3_down. 56.500000, -124.333333
+Vl_0_4_up. 74.500000, 54.333333
+Vr_0_4_up. 74.833333, 57.000000
+Vl_0_4_down. 90.166667, 37.666667
+Vr_0_4_down. 91.166667, 40.333333
+Vl_1_4_up. 73.500000, 22.000000
+Vr_1_4_up. 74.500000, 24.000000
+Vl_1_4_down. 89.166667, 5.333333
+Vr_1_4_down. 90.833333, 7.333333
+Vl_2_4_up. 72.500000, -10.333333
+Vr_2_4_up. 74.166667, -9.000000
+Vl_2_4_down. 88.166667, -27.000000
+Vr_2_4_down. 90.500000, -25.666667
+Vl_3_4_up. 71.500000, -42.666667
+Vr_3_4_up. 73.833333, -42.000000
+Vl_3_4_down. 87.166667, -59.333333
+Vr_3_4_down. 90.166667, -58.666667
+Vl_4_4_up. 70.500000, -75.000000
+Vr_4_4_up. 73.500000, -75.000000
+Vl_4_4_down. 86.166667, -91.666667
+Vr_4_4_down. 89.833333, -91.666667
+Vl_5_4_up. 69.500000, -107.333333
+Vr_5_4_up. 73.166667, -108.000000
+Vl_5_4_down. 85.166667, -124.000000
+Vr_5_4_down. 89.500000, -124.666667
+Vl_0_5_up. 106.833333, 53.333333
+Vr_0_5_up. 107.833333, 56.666667
+Vl_0_5_down. 122.500000, 36.666667
+Vr_0_5_down. 124.166667, 40.000000
+Vl_1_5_up. 105.833333, 21.000000
+Vr_1_5_up. 107.500000, 23.666667
+Vl_1_5_down. 121.500000, 4.333333
+Vr_1_5_down. 123.833333, 7.000000
+Vl_2_5_up. 104.833333, -11.333333
+Vr_2_5_up. 107.166667, -9.333333
+Vl_2_5_down. 120.500000, -28.000000
+Vr_2_5_down. 123.500000, -26.000000
+Vl_3_5_up. 103.833333, -43.666667
+Vr_3_5_up. 106.833333, -42.333333
+Vl_3_5_down. 119.500000, -60.333333
+Vr_3_5_down. 123.166667, -59.000000
+Vl_4_5_up. 102.833333, -76.000000
+Vr_4_5_up. 106.500000, -75.333333
+Vl_4_5_down. 118.500000, -92.666667
+Vr_4_5_down. 122.833333, -92.000000
+Vl_5_5_up. 101.833333, -108.333333
+Vr_5_5_up. 106.166667, -108.333333
+Vl_5_5_down. 117.500000, -125.000000
+Vr_5_5_down. 122.500000, -125.000000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-100, -100)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, -66.6666666666667)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, -100)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, -66.6666666666667)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, -100)
+P_2_0 : P_3_0 : P_2_1 : P_2_0, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, -66.6666666666667)
+P_3_1 : P_2_1 : P_3_0 : P_3_1, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, -100)
+P_3_0 : P_4_0 : P_3_1 : P_3_0, Vl_3_0_up, Vr_3_0_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, -66.6666666666667)
+P_4_1 : P_3_1 : P_4_0 : P_4_1, Vl_3_0_up, Vr_3_0_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, -100)
+P_4_0 : P_5_0 : P_4_1 : P_4_0, Vl_4_0_up, Vr_4_0_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, -66.6666666666667)
+P_5_1 : P_4_1 : P_5_0 : P_5_1, Vl_4_0_up, Vr_4_0_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, -100)
+P_5_0 : P_6_0 : P_5_1 : P_5_0, Vl_5_0_up, Vr_5_0_up
+* half rectangle pointing down whose top right corner is at (100, -66.6666666666667)
+P_6_1 : P_5_1 : P_6_0 : P_6_1, Vl_5_0_up, Vr_5_0_up
+* half rectangle pointing up whose lower left corner is at (-100, -66.6666666666667)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, -33.3333333333333)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, -66.6666666666667)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, -33.3333333333333)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, -66.6666666666667)
+P_2_1 : P_3_1 : P_2_2 : P_2_1, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, -33.3333333333333)
+P_3_2 : P_2_2 : P_3_1 : P_3_2, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, -66.6666666666667)
+P_3_1 : P_4_1 : P_3_2 : P_3_1, Vl_3_1_up, Vr_3_1_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, -33.3333333333333)
+P_4_2 : P_3_2 : P_4_1 : P_4_2, Vl_3_1_up, Vr_3_1_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, -66.6666666666667)
+P_4_1 : P_5_1 : P_4_2 : P_4_1, Vl_4_1_up, Vr_4_1_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, -33.3333333333333)
+P_5_2 : P_4_2 : P_5_1 : P_5_2, Vl_4_1_up, Vr_4_1_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, -66.6666666666667)
+P_5_1 : P_6_1 : P_5_2 : P_5_1, Vl_5_1_up, Vr_5_1_up
+* half rectangle pointing down whose top right corner is at (100, -33.3333333333333)
+P_6_2 : P_5_2 : P_6_1 : P_6_2, Vl_5_1_up, Vr_5_1_up
+* half rectangle pointing up whose lower left corner is at (-100, -33.3333333333333)
+P_0_2 : P_1_2 : P_0_3 : P_0_2, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, 1.4210854715202e-14)
+P_1_3 : P_0_3 : P_1_2 : P_1_3, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, -33.3333333333333)
+P_1_2 : P_2_2 : P_1_3 : P_1_2, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 1.4210854715202e-14)
+P_2_3 : P_1_3 : P_2_2 : P_2_3, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, -33.3333333333333)
+P_2_2 : P_3_2 : P_2_3 : P_2_2, Vl_2_2_up, Vr_2_2_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, 1.4210854715202e-14)
+P_3_3 : P_2_3 : P_3_2 : P_3_3, Vl_2_2_up, Vr_2_2_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, -33.3333333333333)
+P_3_2 : P_4_2 : P_3_3 : P_3_2, Vl_3_2_up, Vr_3_2_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 1.4210854715202e-14)
+P_4_3 : P_3_3 : P_4_2 : P_4_3, Vl_3_2_up, Vr_3_2_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, -33.3333333333333)
+P_4_2 : P_5_2 : P_4_3 : P_4_2, Vl_4_2_up, Vr_4_2_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, 1.4210854715202e-14)
+P_5_3 : P_4_3 : P_5_2 : P_5_3, Vl_4_2_up, Vr_4_2_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, -33.3333333333333)
+P_5_2 : P_6_2 : P_5_3 : P_5_2, Vl_5_2_up, Vr_5_2_up
+* half rectangle pointing down whose top right corner is at (100, 1.4210854715202e-14)
+P_6_3 : P_5_3 : P_6_2 : P_6_3, Vl_5_2_up, Vr_5_2_up
+* half rectangle pointing up whose lower left corner is at (-100, 1.4210854715202e-14)
+P_0_3 : P_1_3 : P_0_4 : P_0_3, Vl_0_3_up, Vr_0_3_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, 33.3333333333333)
+P_1_4 : P_0_4 : P_1_3 : P_1_4, Vl_0_3_up, Vr_0_3_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, 1.4210854715202e-14)
+P_1_3 : P_2_3 : P_1_4 : P_1_3, Vl_1_3_up, Vr_1_3_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 33.3333333333333)
+P_2_4 : P_1_4 : P_2_3 : P_2_4, Vl_1_3_up, Vr_1_3_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, 1.4210854715202e-14)
+P_2_3 : P_3_3 : P_2_4 : P_2_3, Vl_2_3_up, Vr_2_3_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, 33.3333333333333)
+P_3_4 : P_2_4 : P_3_3 : P_3_4, Vl_2_3_up, Vr_2_3_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, 1.4210854715202e-14)
+P_3_3 : P_4_3 : P_3_4 : P_3_3, Vl_3_3_up, Vr_3_3_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 33.3333333333333)
+P_4_4 : P_3_4 : P_4_3 : P_4_4, Vl_3_3_up, Vr_3_3_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, 1.4210854715202e-14)
+P_4_3 : P_5_3 : P_4_4 : P_4_3, Vl_4_3_up, Vr_4_3_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, 33.3333333333333)
+P_5_4 : P_4_4 : P_5_3 : P_5_4, Vl_4_3_up, Vr_4_3_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, 1.4210854715202e-14)
+P_5_3 : P_6_3 : P_5_4 : P_5_3, Vl_5_3_up, Vr_5_3_up
+* half rectangle pointing down whose top right corner is at (100, 33.3333333333333)
+P_6_4 : P_5_4 : P_6_3 : P_6_4, Vl_5_3_up, Vr_5_3_up
+* half rectangle pointing up whose lower left corner is at (-100, 33.3333333333333)
+P_0_4 : P_1_4 : P_0_5 : P_0_4, Vl_0_4_up, Vr_0_4_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, 66.6666666666667)
+P_1_5 : P_0_5 : P_1_4 : P_1_5, Vl_0_4_up, Vr_0_4_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, 33.3333333333333)
+P_1_4 : P_2_4 : P_1_5 : P_1_4, Vl_1_4_up, Vr_1_4_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 66.6666666666667)
+P_2_5 : P_1_5 : P_2_4 : P_2_5, Vl_1_4_up, Vr_1_4_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, 33.3333333333333)
+P_2_4 : P_3_4 : P_2_5 : P_2_4, Vl_2_4_up, Vr_2_4_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, 66.6666666666667)
+P_3_5 : P_2_5 : P_3_4 : P_3_5, Vl_2_4_up, Vr_2_4_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, 33.3333333333333)
+P_3_4 : P_4_4 : P_3_5 : P_3_4, Vl_3_4_up, Vr_3_4_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 66.6666666666667)
+P_4_5 : P_3_5 : P_4_4 : P_4_5, Vl_3_4_up, Vr_3_4_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, 33.3333333333333)
+P_4_4 : P_5_4 : P_4_5 : P_4_4, Vl_4_4_up, Vr_4_4_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, 66.6666666666667)
+P_5_5 : P_4_5 : P_5_4 : P_5_5, Vl_4_4_up, Vr_4_4_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, 33.3333333333333)
+P_5_4 : P_6_4 : P_5_5 : P_5_4, Vl_5_4_up, Vr_5_4_up
+* half rectangle pointing down whose top right corner is at (100, 66.6666666666667)
+P_6_5 : P_5_5 : P_6_4 : P_6_5, Vl_5_4_up, Vr_5_4_up
+* half rectangle pointing up whose lower left corner is at (-100, 66.6666666666667)
+P_0_5 : P_1_5 : P_0_6 : P_0_5, Vl_0_5_up, Vr_0_5_up
+* half rectangle pointing down whose top right corner is at (-66.6666666666667, 100)
+P_1_6 : P_0_6 : P_1_5 : P_1_6, Vl_0_5_up, Vr_0_5_up
+* half rectangle pointing up whose lower left corner is at (-66.6666666666667, 66.6666666666667)
+P_1_5 : P_2_5 : P_1_6 : P_1_5, Vl_1_5_up, Vr_1_5_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 100)
+P_2_6 : P_1_6 : P_2_5 : P_2_6, Vl_1_5_up, Vr_1_5_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, 66.6666666666667)
+P_2_5 : P_3_5 : P_2_6 : P_2_5, Vl_2_5_up, Vr_2_5_up
+* half rectangle pointing down whose top right corner is at (1.4210854715202e-14, 100)
+P_3_6 : P_2_6 : P_3_5 : P_3_6, Vl_2_5_up, Vr_2_5_up
+* half rectangle pointing up whose lower left corner is at (1.4210854715202e-14, 66.6666666666667)
+P_3_5 : P_4_5 : P_3_6 : P_3_5, Vl_3_5_up, Vr_3_5_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 100)
+P_4_6 : P_3_6 : P_4_5 : P_4_6, Vl_3_5_up, Vr_3_5_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, 66.6666666666667)
+P_4_5 : P_5_5 : P_4_6 : P_4_5, Vl_4_5_up, Vr_4_5_up
+* half rectangle pointing down whose top right corner is at (66.6666666666667, 100)
+P_5_6 : P_4_6 : P_5_5 : P_5_6, Vl_4_5_up, Vr_4_5_up
+* half rectangle pointing up whose lower left corner is at (66.6666666666667, 66.6666666666667)
+P_5_5 : P_6_5 : P_5_6 : P_5_5, Vl_5_5_up, Vr_5_5_up
+* half rectangle pointing down whose top right corner is at (100, 100)
+P_6_6 : P_5_6 : P_6_5 : P_6_6, Vl_5_5_up, Vr_5_5_up
+
+* End of spdifile

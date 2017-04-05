@@ -1,0 +1,11 @@
+Meta-SPDI Demonstration Programs
+
+The files in this directory are examples showing the use of 
+the Regular SPDI partition Perl library. 
+
+To try an example, simply make sure that the MSPDI libraries can be 
+directly accessed by perl. Then simply running the mspdi file creates 
+the corresponding spdi file, which can then be manipulated by SPeeDI. 
+
+Gordon Pace 
+September 2002
