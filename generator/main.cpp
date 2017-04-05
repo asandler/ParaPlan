@@ -179,9 +179,9 @@ int main(int argc, char **argv) {
         }
 
         //cerr << "Start points" << endl;
-        for (const auto& sp : startPoints) {
+        //for (const auto& sp : startPoints) {
             //cerr << sp << endl;
-        }
+        //}
 
         for (auto startEdge : startPoints) {
 
