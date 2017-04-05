@@ -35,7 +35,7 @@ string ConstructEdgeName(const string& a, const string& b) {
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        cerr << "Argument missing: number of initial region centers" << endl;
+        //cerr << "Argument missing: number of initial region centers" << endl;
         return 1;
     }
 
@@ -159,12 +159,12 @@ int main(int argc, char **argv) {
     }
 
     for (const auto& r : regions) {
-        cerr << "Region: " << r.first << endl;
+        //cerr << "Region: " << r.first << endl;
         vector<size_t> startPoints;
 
         for (size_t i = 0; i < r.second.size(); ++i) {
             string curEdgeId = ConstructEdgeName(r.second[i].first.id, r.second[i].second.id);
-            cerr << verticesNamesRemap[r.second[i].first.id] << "-" << verticesNamesRemap[r.second[i].second.id] << " " << curEdgeId << "\t" << outputEdges[curEdgeId] << endl;
+            //cerr << verticesNamesRemap[r.second[i].first.id] << "-" << verticesNamesRemap[r.second[i].second.id] << " " << curEdgeId << "\t" << outputEdges[curEdgeId] << endl;
 
             size_t i_next = (i + 1) % r.second.size();
             string nextEdgeId = ConstructEdgeName(r.second[i_next].first.id, r.second[i_next].second.id);
@@ -178,9 +178,9 @@ int main(int argc, char **argv) {
             startPoints.push_back(rand() % r.second.size());
         }
 
-        cerr << "Start points" << endl;
+        //cerr << "Start points" << endl;
         for (const auto& sp : startPoints) {
-            cerr << sp << endl;
+            //cerr << sp << endl;
         }
 
         for (auto startEdge : startPoints) {
@@ -189,7 +189,7 @@ int main(int argc, char **argv) {
             size_t postEdge = (startEdge + r.second.size() + 1) % r.second.size();
             size_t curEdge = startEdge;
 
-            cerr << "prevEdge = " << prevEdge << ", postEdge = " << postEdge << endl;
+            //cerr << "prevEdge = " << prevEdge << ", postEdge = " << postEdge << endl;
 
             VPoint first = r.second[startEdge].first;
             VPoint preFirst = r.second[prevEdge].first;
@@ -200,18 +200,18 @@ int main(int argc, char **argv) {
             VPoint leftVector(first.x - preFirst.x, first.y - preFirst.y);
             VPoint rightVector(last.x - postLast.x, last.y - postLast.y);
 
-            cerr << "preFirst = " << verticesNamesRemap[preFirst.id] << endl;
-            cerr << "first = " << verticesNamesRemap[first.id] << endl;
-            cerr << "last = " << verticesNamesRemap[last.id] << endl;
-            cerr << "postLast = " << verticesNamesRemap[postLast.id] << endl;
+            //cerr << "preFirst = " << verticesNamesRemap[preFirst.id] << endl;
+            //cerr << "first = " << verticesNamesRemap[first.id] << endl;
+            //cerr << "last = " << verticesNamesRemap[last.id] << endl;
+            //cerr << "postLast = " << verticesNamesRemap[postLast.id] << endl;
 
             bool foundAnswer = false;
 
-            cerr << "Start cycling" << endl << verticesNamesRemap[r.second[startEdge].first.id] << "-" << verticesNamesRemap[r.second[startEdge].second.id] << endl;
+            //cerr << "Start cycling" << endl << verticesNamesRemap[r.second[startEdge].first.id] << "-" << verticesNamesRemap[r.second[startEdge].second.id] << endl;
 
             while (postEdge != startEdge) {
                 string edgeId = ConstructEdgeName(r.second[curEdge].first.id, r.second[curEdge].second.id);
-                cerr << verticesNamesRemap[r.second[curEdge].first.id] << "-" << verticesNamesRemap[r.second[curEdge].second.id] << " " << edgeId << endl;
+                //cerr << verticesNamesRemap[r.second[curEdge].first.id] << "-" << verticesNamesRemap[r.second[curEdge].second.id] << " " << edgeId << endl;
                 
                 if (outputEdges[edgeId]) {
                     break;
@@ -219,7 +219,7 @@ int main(int argc, char **argv) {
                     outputEdges[edgeId] = true;
                 }
 
-                cerr << "OrientedAngle = " << OrientedAngle(leftVector, rightVector) << endl;
+                //cerr << "OrientedAngle = " << OrientedAngle(leftVector, rightVector) << endl;
                 if (OrientedAngle(leftVector, rightVector) > 0) {
                     foundAnswer = true;
                     break;
@@ -227,13 +227,13 @@ int main(int argc, char **argv) {
 
                 curEdge = postEdge;
                 postEdge = (postEdge + r.second.size() + 1) % r.second.size();
-                cerr << "postEdge = " << postEdge << endl;
+                //cerr << "postEdge = " << postEdge << endl;
 
                 last = postLast;
                 postLast = r.second[postEdge].second;
 
-                cerr << "last = " << verticesNamesRemap[last.id] << endl;
-                cerr << "postLast = " << verticesNamesRemap[postLast.id] << endl;
+                //cerr << "last = " << verticesNamesRemap[last.id] << endl;
+                //cerr << "postLast = " << verticesNamesRemap[postLast.id] << endl;
 
                 rightVector.x = last.x - postLast.x;
                 rightVector.y = last.y - postLast.y;
