@@ -19,4 +19,7 @@ while s = $stdin.gets
     count += 1
 end
 
-puts a.map{|v| (v /= count).to_s[0..4]}.join(' ') + "\t| " + ARGV[0] + " |\t" + a.map{|v| (v = a[0] / v).to_s[0..4]}.join(' ')
+a.map!{|v| (v /= count).to_s[0..4] }
+
+puts a.join(' ')
+puts a.map{|v| (a[0].to_f / v.to_f).to_s[0..4]}.join(' ')
