@@ -21,5 +21,4 @@ end
 
 a.map!{|v| (v /= count).to_s[0..4] }
 
-puts a.join(' ')
-puts a.map{|v| (a[0].to_f / v.to_f).to_s[0..4]}.join(' ')
+puts a.join(' ') + "\t|\t" + a.map{|v| (a[0].to_f / v.to_f).to_s[0..4]}.join(' ')

@@ -188,8 +188,10 @@ int main(int argc, char** argv) {
         window.clear(Color::White);
         window.draw(lines);
 
-        for (const auto& text : verticesNumbers) {
-            window.draw(text);
+        if ((argc == 2) || (argc > 2 && string(argv[2]) != "nonumbers")) {
+            for (const auto& text : verticesNumbers) {
+                window.draw(text);
+            }
         }
 
         window.display();
