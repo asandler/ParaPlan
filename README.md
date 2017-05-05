@@ -1,6 +1,4 @@
-# spdi-solver
-
-Tool for solving reachability tasks on SPDI (polygonal differential inclusion systems)
+# ParaPlan: a tool for parallel reachablity analysis of planar polygonal differential inclusion systems
 
 Based on the papers and previous work of Gordon J. Pace, Gerardo Schneider and others: http://www.cs.um.edu.mt/~svrg/Tools/SPeeDI/index.html
 
