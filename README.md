@@ -2,7 +2,7 @@
 
 Based on the papers and previous work of Gordon J. Pace, Gerardo Schneider and others: http://www.cs.um.edu.mt/~svrg/Tools/SPeeDI/index.html
 
-How to make it: install SFML for drawer and just type "make" in each directory.
+How to build it: install SFML for drawer and just type "make" in each directory.
 
 ## solver
 
