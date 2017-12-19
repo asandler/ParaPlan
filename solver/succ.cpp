@@ -3,7 +3,7 @@
 
 #include "succ.h"
 
-pair <double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, const vec2& c) {
+pair<double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, const vec2& c) {
     //cout << "SuccPointAMF: e1(start, dir) = (" << e1.Start.x << ", " << e1.Start.y << "), (" << e1.Dir.x << ", " << e1.Dir.y << ")" << endl;
     //cout << "SuccPointAMF: e2(start, dir) = (" << e2.Start.x << ", " << e2.Start.y << "), (" << e2.Dir.x << ", " << e2.Dir.y << ")" << endl;
     bool isReal = true;
@@ -31,7 +31,7 @@ pair <double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2,
 }
 
 pair<double, double> SuccInt(const double x1, const double x2, const Edge& e1, const Edge& e2, const vec2& c1, const vec2& c2) {
-    vector<pair<double, bool> > pointImages;
+    vector<pair<double, bool>> pointImages;
     pointImages.push_back(SuccPointAMF(x1, e1, e2, c1));
     pointImages.push_back(SuccPointAMF(x1, e1, e2, c2));
     pointImages.push_back(SuccPointAMF(x2, e1, e2, c1));
@@ -73,8 +73,7 @@ double SuccPointAMFSigma(
     const double x,
     const vector<size_t>& sigma,
     const char type,
-    const SPDI& spdi
-) {
+    const SPDI& spdi) {
     double ans = x;
 
     for (size_t i = 0; i < sigma.size() - 1; ++i) {

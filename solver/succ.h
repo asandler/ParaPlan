@@ -14,12 +14,10 @@ pair<double, double> SuccInt(
     const Edge& e1,
     const Edge& e2,
     const vec2& c1,
-    const vec2& c2
-);
+    const vec2& c2);
 
 double SuccPointAMFSigma(
     const double x,
     const vector<size_t>& sigma,
     const char type,
-    const SPDI& spdi
-);
+    const SPDI& spdi);

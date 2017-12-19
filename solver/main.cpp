@@ -32,8 +32,7 @@ int main(int argc, char** argv) {
         {"spdi", required_argument, 0, 0},
         {"task", required_argument, 0, 0},
         {"threads", required_argument, 0, 0},
-        {0, 0, 0, 0}
-    };
+        {0, 0, 0, 0}};
 
     int option_index = 0, c = 0;
 

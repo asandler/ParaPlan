@@ -8,7 +8,7 @@
 void ReadAndValidateSPDI(const string& filename, SPDI& spdi) {
     unordered_map<string, vec2> Vertices;
     unordered_map<string, vec2> Vectors;
-    unordered_map<size_t, unordered_set<size_t> > VisitedOutputEdges;
+    unordered_map<size_t, unordered_set<size_t>> VisitedOutputEdges;
 
     string s;
     char state = 'n';
@@ -87,7 +87,7 @@ void ReadAndValidateSPDI(const string& filename, SPDI& spdi) {
                 //cout << "-----------------" << endl;
 
                 for (size_t i = 0; i < regionVertices.size() - 1; ++i) {
-                    spdi.EdgesConnections.push_back(pair<vector<size_t>, pair<vec2, vec2> >());
+                    spdi.EdgesConnections.push_back(pair<vector<size_t>, pair<vec2, vec2>>());
 
                     for (size_t j = 0; j < regionVertices.size() - 1; ++j) {
                         if (i == j) {

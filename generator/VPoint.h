@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef VPoint_h
 #define VPoint_h
 
@@ -6,7 +8,8 @@
 
 struct VPoint {
 public:
-    VPoint() {}
+    VPoint() {
+    }
 
     VPoint(double nx, double ny)
         : x(nx)

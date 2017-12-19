@@ -33,7 +33,7 @@ string ConstructEdgeName(const string& a, const string& b) {
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     if (argc < 2) {
         //cerr << "Argument missing: number of initial region centers" << endl;
         return 1;
@@ -59,8 +59,8 @@ int main(int argc, char **argv) {
     unordered_map<string, size_t> verticesNamesRemap;
     unordered_map<string, VPoint> verticesToOutput;
 
-    unordered_map<string, vector<pair<VPoint, VPoint> > > regions;
-    unordered_map<string, pair<VPoint, VPoint> > regionVectors;
+    unordered_map<string, vector<pair<VPoint, VPoint>>> regions;
+    unordered_map<string, pair<VPoint, VPoint>> regionVectors;
     unordered_map<string, bool> outputEdges;
 
     for (vor::Edges::iterator i = edges->begin(); i != edges->end(); ++i) {
@@ -88,12 +88,12 @@ int main(int argc, char **argv) {
             verticesNamesRemap[eid] = verticesNamesRemap.size();
         }
         if (regions.find(lid) == regions.end()) {
-            regions[lid] = vector<pair<VPoint, VPoint> >();
+            regions[lid] = vector<pair<VPoint, VPoint>>();
         }
         if (regions.find(rid) == regions.end()) {
-            regions[rid] = vector<pair<VPoint, VPoint> >();
+            regions[rid] = vector<pair<VPoint, VPoint>>();
         }
-        
+
         regions[lid].push_back(make_pair(vertices[sid], vertices[eid]));
         regions[rid].push_back(make_pair(vertices[sid], vertices[eid]));
     }
@@ -180,11 +180,10 @@ int main(int argc, char **argv) {
 
         //cerr << "Start points" << endl;
         //for (const auto& sp : startPoints) {
-            //cerr << sp << endl;
+        //cerr << sp << endl;
         //}
 
         for (auto startEdge : startPoints) {
-
             size_t prevEdge = (startEdge + r.second.size() - 1) % r.second.size();
             size_t postEdge = (startEdge + r.second.size() + 1) % r.second.size();
             size_t curEdge = startEdge;
@@ -212,7 +211,7 @@ int main(int argc, char **argv) {
             while (postEdge != startEdge) {
                 string edgeId = ConstructEdgeName(r.second[curEdge].first.id, r.second[curEdge].second.id);
                 //cerr << verticesNamesRemap[r.second[curEdge].first.id] << "-" << verticesNamesRemap[r.second[curEdge].second.id] << " " << edgeId << endl;
-                
+
                 if (outputEdges[edgeId]) {
                     break;
                 } else {
@@ -263,26 +262,29 @@ int main(int argc, char **argv) {
         cout << verticesNamesRemap[v.second.id] << ". " << v.second.x << ", " << v.second.y << endl;
     }
 
-    cout << endl << "Vectors:" << endl;
+    cout << endl
+         << "Vectors:" << endl;
 
     for (const auto& r : regions) {
         cout << "v_" << r.first << "_1. " << regionVectors[r.first].first.x << ", " << regionVectors[r.first].first.y << endl;
         cout << "v_" << r.first << "_2. " << regionVectors[r.first].second.x << ", " << regionVectors[r.first].second.y << endl;
     }
 
-    cout << endl << "Regions:" << endl;
+    cout << endl
+         << "Regions:" << endl;
 
     for (const auto& r : regions) {
         cout << "* R_" << r.first << endl;
         for (size_t i = 0; i < r.second.size(); ++i) {
             cout << verticesNamesRemap[r.second[i].first.id] << " : ";
         }
-        cout << verticesNamesRemap[r.second[0].first.id] << ", v_" << r.first << "_1, v_" << r.first << "_2" << endl << endl;
+        cout << verticesNamesRemap[r.second[0].first.id] << ", v_" << r.first << "_1, v_" << r.first << "_2" << endl
+             << endl;
     }
 
     delete v;
     delete ver;
     delete dir;
-    
+
     return 0;
 }

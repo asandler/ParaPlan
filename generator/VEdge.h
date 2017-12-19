@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef VEdge_h
 #define VEdge_h
 
@@ -7,15 +9,15 @@
 /*
     A class that stores an edge in Voronoi diagram
 
-    start	: pointer to start point
-    end		: pointer to end point
+    start    : pointer to start point
+    end        : pointer to end point
     left        : pointer to Voronoi place on the left side of edge
-    right	: pointer to Voronoi place on the right side of edge
+    right    : pointer to Voronoi place on the right side of edge
 
-    neighbour	: some edges consist of two parts, so we add the pointer to another part to connect them at the end of an algorithm
+    neighbour    : some edges consist of two parts, so we add the pointer to another part to connect them at the end of an algorithm
 
-    direction	: directional vector, from "start", points to "end", normal of |left, right|
-    f, g	: directional coeffitients satisfying equation y = f*x + g (edge lies on this line)
+    direction    : directional vector, from "start", points to "end", normal of |left, right|
+    f, g    : directional coeffitients satisfying equation y = f*x + g (edge lies on this line)
 */
 
 class VEdge {
@@ -27,7 +29,7 @@ public:
         , right(b)
         , neighbour(0)
     {
-        f = (b->x - a->x) / (a->y - b->y) ;
+        f = (b->x - a->x) / (a->y - b->y);
         g = s->y - f * s->x;
         direction = new VPoint(b->y - a->y, -(b->x - a->x));
     }
@@ -41,7 +43,7 @@ public:
     VPoint* direction;
     VPoint* left;
     VPoint* right;
-    
+
     double f;
     double g;
 

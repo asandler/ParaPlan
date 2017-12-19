@@ -10,19 +10,17 @@ using namespace std;
 
 bool isFinState(const size_t edgeIndex, const pair<double, double>& borders, const SPDIReachTask& reachTask);
 
-pair<bool, pair<double, double> > IterateCycleAndCheckFinalState(
+pair<bool, pair<double, double>> IterateCycleAndCheckFinalState(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask& reachTask
-);
+    const SPDIReachTask& reachTask);
 
-pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
+pair<bool, vector<pair<double, double>>> TestCycleAndGetFinalImages(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask& reachTask
-);
+    const SPDIReachTask& reachTask);
 
 void DFSSignaturesExploration(
     const size_t edgeIndex,
@@ -31,7 +29,6 @@ void DFSSignaturesExploration(
     unordered_set<size_t> visitedEdges,
     unordered_set<string> visitedCycles,
     const SPDI& spdi,
-    const SPDIReachTask& spdiReachTask
-);
+    const SPDIReachTask& spdiReachTask);
 
 void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask);

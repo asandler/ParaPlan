@@ -30,7 +30,6 @@ double CalcLimitPoint(const double a, const double b, const double x0) {
         return b / (1 - a);
 
     } else if (a == 1) {
-
         if (b == 0) {
             return x0;
         } else if (b < 0) {
@@ -40,7 +39,6 @@ double CalcLimitPoint(const double a, const double b, const double x0) {
         }
 
     } else {
-
         if (x0 == (b / (1 - a))) {
             return x0;
         } else if (x0 > (b / (1 - a))) {
