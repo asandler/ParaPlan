@@ -98,6 +98,7 @@ VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
 
                 double xSum = 0;
                 double ySum = 0;
+
                 for (size_t i = 0; i < regVert.size() - 1; ++i) {
                     double coord1 = Vertices[regVert[i]].first;
                     double coord2 = Vertices[regVert[i]].second;
@@ -161,12 +162,15 @@ int main(int argc, char** argv) {
     VertexArray lines = ConstructVertexArrayFromSPDI(argv[1]);
 
     Font arialFont;
-    if (!arialFont.loadFromFile("arial.ttf")) {
-        cerr << "Couldn't load font from file arial.ttf" << endl;
-        return 1;
+    if (!arialFont.loadFromFile("/usr/share/fonts/truetype/msttcorefonts/arial.ttf")) {
+        if (!arialFont.loadFromFile("arial.ttf")) {
+            cerr << "Couldn't load font file arial.ttf" << endl;
+            return 1;
+        }
     }
     
     vector<Text> verticesNumbers;
+
     for (const auto& v : Vertices) {
         Text numberText;
         numberText.setFont(arialFont);

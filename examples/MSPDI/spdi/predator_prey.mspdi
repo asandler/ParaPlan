@@ -1,0 +1,19 @@
+#!/usr/local/bin/perl
+
+use MSPDI;
+use Rectangles;
+
+#   dx/dt = -x + xy
+#   dy/dt = y - xy
+
+sub xdot {
+    my ($x, $y) = @_;
+    return(-$x + $x * $y);
+}
+
+sub ydot {
+    my ($x, $y) = @_;
+    return($y - $x * $y);
+}
+
+rectanglesCentre ((0.01, 0.01), (2.01, 2.01), (16, 16));

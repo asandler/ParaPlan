@@ -16,9 +16,9 @@ Edges* Voronoi::GetEdges(Vertices* v, int w, int h) {
     height = h;
     root = 0;
 
-    if (!edges)
+    if (!edges) {
         edges = new Edges();
-    else {
+    } else {
         for (Vertices::iterator i = points.begin(); i != points.end(); ++i)
             delete (*i);
         for (Edges::iterator i = edges->begin(); i != edges->end(); ++i)
@@ -66,18 +66,18 @@ void Voronoi::InsertParabola(VPoint* p) {
         return;
     }
 
-    if (root->isLeaf && root->site->y - p->y < 1)
-    {
+    if (root->isLeaf && root->site->y - p->y < 1) {
         VPoint* fp = root->site;
         root->isLeaf = false;
         root->SetLeft(new VParabola(fp));
         root->SetRight(new VParabola(p));
         VPoint* s = new VPoint((p->x + fp->x) / 2, height);
         points.push_back(s);
-        if (p->x > fp->x)
+        if (p->x > fp->x) {
             root->edge = new VEdge(s, fp, p);
-        else
+        } else {
             root->edge = new VEdge(s, p, fp);
+        }
         edges->push_back(root->edge);
         return;
     }
@@ -147,25 +147,31 @@ void Voronoi::RemoveParabola(VEvent* e) {
     VParabola* par = p1;
     while (par != root) {
         par = par->parent;
-        if (par == xl)
+        if (par == xl) {
             higher = xl;
-        if (par == xr)
+        }
+        if (par == xr) {
             higher = xr;
+        }
     }
     higher->edge = new VEdge(p, p0->site, p2->site);
     edges->push_back(higher->edge);
 
     VParabola* gparent = p1->parent->parent;
     if (p1->parent->Left() == p1) {
-        if (gparent->Left() == p1->parent)
+        if (gparent->Left() == p1->parent) {
             gparent->SetLeft(p1->parent->Right());
-        if (gparent->Right() == p1->parent)
+        }
+        if (gparent->Right() == p1->parent) {
             gparent->SetRight(p1->parent->Right());
+        }
     } else {
-        if (gparent->Left() == p1->parent)
+        if (gparent->Left() == p1->parent) {
             gparent->SetLeft(p1->parent->Left());
-        if (gparent->Right() == p1->parent)
+        }
+        if (gparent->Right() == p1->parent) {
             gparent->SetRight(p1->parent->Left());
+        }
     }
 
     delete p1->parent;
@@ -221,10 +227,11 @@ double Voronoi::GetXOfEdge(VParabola* par, double y) {
     double x2 = (-b - sqrt(disc)) / (2 * a);
 
     double ry;
-    if (p->y < r->y)
+    if (p->y < r->y) {
         ry = std::max(x1, x2);
-    else
+    } else {
         ry = std::min(x1, x2);
+    }
 
     return ry;
 }
@@ -233,19 +240,18 @@ VParabola* Voronoi::GetParabolaByX(double xx) {
     VParabola* par = root;
     double x = 0.0;
 
-    while (!par->isLeaf)
-    {
+    while (!par->isLeaf) {
         x = GetXOfEdge(par, ly);
-        if (x > xx)
+        if (x > xx) {
             par = par->Left();
-        else
+        } else {
             par = par->Right();
+        }
     }
     return par;
 }
 
-double Voronoi::GetY(VPoint* p, double x)
-{
+double Voronoi::GetY(VPoint* p, double x) {
     double dp = 2 * (p->y - ly);
     double a1 = 1 / dp;
     double b1 = -2 * p->x / dp;
@@ -261,13 +267,15 @@ void Voronoi::CheckCircle(VParabola* b) {
     VParabola* a = VParabola::GetLeftChild(lp);
     VParabola* c = VParabola::GetRightChild(rp);
 
-    if (!a || !c || a->site == c->site)
+    if (!a || !c || a->site == c->site) {
         return;
+    }
 
     VPoint* s = 0;
     s = GetEdgeIntersection(lp->edge, rp->edge);
-    if (s == 0)
+    if (s == 0) {
         return;
+    }
 
     double dx = a->site->x - s->x;
     double dy = a->site->y - s->y;
@@ -289,15 +297,19 @@ VPoint* Voronoi::GetEdgeIntersection(VEdge* a, VEdge* b) {
     double x = (b->g - a->g) / (a->f - b->f);
     double y = a->f * x + a->g;
 
-    if ((x - a->start->x) / a->direction->x < 0)
+    if ((x - a->start->x) / a->direction->x < 0) {
         return 0;
-    if ((y - a->start->y) / a->direction->y < 0)
+    }
+    if ((y - a->start->y) / a->direction->y < 0) {
         return 0;
+    }
 
-    if ((x - b->start->x) / b->direction->x < 0)
+    if ((x - b->start->x) / b->direction->x < 0) {
         return 0;
-    if ((y - b->start->y) / b->direction->y < 0)
+    }
+    if ((y - b->start->y) / b->direction->y < 0) {
         return 0;
+    }
 
     VPoint* p = new VPoint(x, y);
     points.push_back(p);

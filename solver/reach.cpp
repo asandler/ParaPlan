@@ -24,7 +24,8 @@ struct DFSData {
         const size_t depth,
         const unordered_set<size_t>& visitedEdges = unordered_set<size_t>(),
         const unordered_set<string>& visitedCycles = unordered_set<string>(),
-        const vector<size_t>& curResidualPath = vector<size_t>())
+        const vector<size_t>& curResidualPath = vector<size_t>()
+    )
         : EdgeIndex(edgeIndex)
         , Borders(borders)
         , Spdi(spdi)
@@ -68,17 +69,19 @@ bool isFinState(const size_t edgeIndex, const pair<double, double>& borders, con
     }
 }
 
-pair<bool, pair<double, double>> IterateCycleAndCheckFinalState(
+pair<bool, pair<double, double> > IterateCycleAndCheckFinalState(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask& reachTask) {
+    const SPDIReachTask& reachTask
+) {
     auto im = borders;
 
     for (size_t i = 0; i < cycle.size() - 1; ++i) {
         if (!ValidImage(im)) {
             return make_pair(false, make_pair(-1, -2));
         } else {
+
             if (isFinState(cycle[i], im, reachTask)) {
                 return make_pair(true, im);
             }
@@ -89,7 +92,8 @@ pair<bool, pair<double, double>> IterateCycleAndCheckFinalState(
                 spdi.Edges[cycle[i]],
                 spdi.Edges[cycle[i + 1]],
                 spdi.EdgesConnections[cycle[i]].second.first,
-                spdi.EdgesConnections[cycle[i]].second.second);
+                spdi.EdgesConnections[cycle[i]].second.second
+            );
         }
     }
 
@@ -100,19 +104,20 @@ pair<bool, pair<double, double>> IterateCycleAndCheckFinalState(
     }
 }
 
-pair<bool, vector<pair<double, double>>> TestCycleAndGetFinalImages(
+pair<bool, vector<pair<double, double> > > TestCycleAndGetFinalImages(
     const vector<size_t>& cycle,
     const pair<double, double>& borders,
     const SPDI& spdi,
-    const SPDIReachTask& reachTask) {
+    const SPDIReachTask& reachTask
+) {
     const auto res = IterateCycleAndCheckFinalState(cycle, borders, spdi, reachTask);
     if (res.first) {
-        return make_pair(true, vector<pair<double, double>>(1, res.second));
+        return make_pair(true, vector<pair<double, double> >(1, res.second));
     }
 
     auto imPrev = borders;
     auto imSucc = res.second;
-    auto answer = make_pair(false, vector<pair<double, double>>(1, imPrev));
+    auto answer = make_pair(false, vector<pair<double, double> >(1, imPrev));
 
     while (!ImagesIntersect(imPrev, imSucc)) {
         /*
@@ -162,15 +167,15 @@ pair<bool, vector<pair<double, double>>> TestCycleAndGetFinalImages(
     pair<double, double> finalDomain = make_pair(lFin, rFin);
 
     if (!ValidImage(finalDomain)) {
-        return make_pair(false, vector<pair<double, double>>(1, make_pair(-1, -2)));
+        return make_pair(false, vector<pair<double, double> >(1, make_pair(-1, -2)));
     }
 
     const auto ans = IterateCycleAndCheckFinalState(cycle, finalDomain, spdi, reachTask);
-    return make_pair(ans.first, vector<pair<double, double>>(1, finalDomain));
+    return make_pair(ans.first, vector<pair<double, double> >(1, finalDomain));
 }
 
 void* DFSSignaturesExploration(void* threadArguments) {
-    DFSData* threadData = (DFSData*)threadArguments;
+    DFSData* threadData = (DFSData*) threadArguments;
 
     const size_t edgeIndex = threadData->EdgeIndex;
     const pair<double, double>& borders = threadData->Borders;
@@ -180,6 +185,13 @@ void* DFSSignaturesExploration(void* threadArguments) {
     unordered_set<string>& visitedCycles = threadData->VisitedCycles;
     vector<size_t>& curResidualPath = threadData->CurResidualPath;
     const size_t depth = threadData->Depth;
+
+    if (Debug) {
+        for (size_t i = 0; i < depth; ++i) {
+            cout << " ";
+        }
+        cout << spdi.EdgeIdMap[edgeIndex] << " [" << borders.first << ", " << borders.second << "]" << endl;
+    }
 
     stack[depth] = edgeIndex;
 
@@ -232,8 +244,8 @@ void* DFSSignaturesExploration(void* threadArguments) {
             visitedCycles.insert(cycleId);
         }
 
-        reverse(cycle.begin(), cycle.end()); //restore original order of cycle edges
-        cycle.push_back(edgeIndex);          //close cycle with the initial edge
+        reverse(cycle.begin(), cycle.end());    //restore original order of cycle edges
+        cycle.push_back(edgeIndex);             //close cycle with the initial edge
 
         const auto res = TestCycleAndGetFinalImages(cycle, borders, spdi, reachTask);
 
@@ -265,7 +277,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
                             --FreeThreads;
                             threadIds.push_back(0);
                             pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
-                                           new DFSData(nextEdge, image, spdi, reachTask, depth + 1, visitedEdges, visitedCycles));
+                                    new DFSData(nextEdge, image, spdi, reachTask, depth + 1, visitedEdges, visitedCycles));
                             pthread_mutex_unlock(&FreeThreadsMutex);
                         } else {
                             pthread_mutex_unlock(&FreeThreadsMutex);
@@ -303,7 +315,7 @@ void* DFSSignaturesExploration(void* threadArguments) {
                     --FreeThreads;
                     threadIds.push_back(0);
                     pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
-                                   new DFSData(nextEdge, image, spdi, reachTask, depth + 1, visitedEdges, visitedCycles, curResidualPath));
+                            new DFSData(nextEdge, image, spdi, reachTask, depth + 1, visitedEdges, visitedCycles, curResidualPath));
                     pthread_mutex_unlock(&FreeThreadsMutex);
                 } else {
                     pthread_mutex_unlock(&FreeThreadsMutex);
@@ -336,7 +348,7 @@ void SolveReachTask(const SPDI& spdi, const SPDIReachTask& reachTask) {
             --FreeThreads;
             threadIds.push_back(0);
             pthread_create(&threadIds[threadIds.size() - 1], &ThreadAttributes, DFSSignaturesExploration,
-                           new DFSData(startEdge.first, startEdge.second, spdi, reachTask, 0));
+                    new DFSData(startEdge.first, startEdge.second, spdi, reachTask, 0));
             pthread_mutex_unlock(&FreeThreadsMutex);
         } else {
             pthread_mutex_unlock(&FreeThreadsMutex);

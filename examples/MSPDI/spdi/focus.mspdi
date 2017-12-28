@@ -1,0 +1,19 @@
+#!/usr/local/bin/perl
+
+use MSPDI;
+use HalfRectangles;
+
+#   dx/dt = x - y
+#   dy/dt = x + y
+
+sub xdot {
+    my ($x, $y) = @_;
+    return ($x - $y);
+}
+
+sub ydot {
+    my ($x, $y) = @_;
+    return ($x + $y);
+}
+
+halfrectanglesCentre ((0, 0), (4, 4), (16, 16));

@@ -7,6 +7,8 @@ pthread_attr_t ThreadAttributes;
 int ThreadsNumber = 1;
 int FreeThreads = 0;
 bool Answer = false;
+bool Strict = false;
+bool Debug = false;
 
 SPDI Spdi;
 SPDIReachTask ReachTask;

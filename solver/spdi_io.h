@@ -9,6 +9,6 @@
 
 using namespace std;
 
-void ReadAndValidateSPDI(const string& filename, SPDI& spdi);
+void ReadAndValidateSPDI(const string& filename, SPDI& spdi, bool strict);
 
 void ReadStartAndFinalEdgeParts(const string& filename, const SPDI& spdi, SPDIReachTask& reachTask);

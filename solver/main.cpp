@@ -32,25 +32,36 @@ int main(int argc, char** argv) {
         {"spdi", required_argument, 0, 0},
         {"task", required_argument, 0, 0},
         {"threads", required_argument, 0, 0},
-        {0, 0, 0, 0}};
+        {"strict", no_argument, 0, 0},
+        {"debug", no_argument, 0, 0},
+        {0, 0, 0, 0}
+    };
 
     int option_index = 0, c = 0;
 
     while ((c = getopt_long(argc, argv, "h", long_options, &option_index)) != -1) {
-        switch (c) {
-            case 0:
-                if (option_index == 0) {
+        if (c == 0) {
+            switch (option_index) {
+                case 0:
                     spdiPath = optarg;
-                } else if (option_index == 1) {
+                    break;
+                case 1:
                     spdiReachTaskPath = optarg;
-                } else if (option_index == 2) {
+                    break;
+                case 2: 
                     ThreadsNumber = atoi(optarg);
                     FreeThreads = ThreadsNumber - 1;
-                }
-                break;
-            default:
-                PrintUsage();
-                break;
+                    break;
+                case 3:
+                    Strict = true;
+                    break;
+                case 4:
+                    Debug = true;
+                    break;
+            }
+        } else {
+            PrintUsage();
+            break;
         }
     }
 
@@ -59,7 +70,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    ReadAndValidateSPDI(spdiPath, Spdi);
+    ReadAndValidateSPDI(spdiPath, Spdi, Strict);
     ReadStartAndFinalEdgeParts(spdiReachTaskPath, Spdi, ReachTask);
 
     pthread_mutex_init(&FreeThreadsMutex, NULL);

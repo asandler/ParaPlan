@@ -12,8 +12,7 @@ struct Edge {
     Edge(const vec2& s, const vec2& e)
         : Start(s)
         , Dir(e - s)
-    {
-    }
+        {}
 
     vec2 Start;
     vec2 Dir;
@@ -21,14 +20,14 @@ struct Edge {
 
 struct SPDI {
     std::vector<Edge> Edges;
-    std::vector<std::pair<std::vector<size_t>, std::pair<vec2, vec2>>> EdgesConnections;
+    std::vector<std::pair<std::vector<size_t>, std::pair<vec2, vec2> > > EdgesConnections;
     std::unordered_map<std::string, size_t> EdgeIdRemap;
     std::vector<std::string> EdgeIdMap;
 };
 
 struct SPDIReachTask {
-    std::unordered_map<size_t, std::pair<double, double>> StartEdgeParts;
-    std::unordered_map<size_t, std::pair<double, double>> FinalEdgeParts;
+    std::unordered_map<size_t, std::pair<double, double> > StartEdgeParts;
+    std::unordered_map<size_t, std::pair<double, double> > FinalEdgeParts;
 };
 
 double OrientedAngle(const vec2& a, const vec2& b);

@@ -1,0 +1,32 @@
+#!/usr/local/bin/perl
+
+use MSPDI;
+use HalfRectangles;
+
+#   if 0 <= y < 0.99
+#       dx/dt = 1 - sqrt(x)
+#       dy/dt = sqrt(x) - sqrt(y)
+#   else
+#       dx/dt = 1 - sqrt(x - y + 1)
+#       dy/dt = sqrt(x - y + 1) - sqrt(y)
+
+
+sub xdot {
+    my ($x, $y) = @_;
+    if ($y < 0.99) {
+        return (1 - sqrt($x));
+    } else {
+        return (1 - sqrt($x - $y + 1));
+    }
+}
+
+sub ydot {
+    my ($x, $y) = @_;
+    if ($y < 0.99) {
+        return (sqrt($x) - sqrt($y));
+    } else {
+        return (sqrt($x - $y + 1) - sqrt($y));
+    }
+}
+
+halfrectanglesCentre((4, 0), (6, 2), (16, 16));

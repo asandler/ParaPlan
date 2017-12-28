@@ -29,6 +29,4 @@ $pi=3.14159265358979;
 sub xdot { my ($x,$y) = @_; return($y); } 
 sub ydot { my ($x,$y) = @_; return(-($k*$y)/($M*$R*$R)-$g*sin($x)/$R); } 
 
-halfrectanglesCylinderCentre ((-$pi,-5), ($pi,5), (10,20));
-
-
+halfrectanglesCylinderCentre ((-$pi,-5), ($pi,5), (10,10));

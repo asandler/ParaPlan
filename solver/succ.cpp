@@ -1,11 +1,12 @@
 #include <stdexcept>
 #include <iostream>
 
+#include "globals.h"
 #include "succ.h"
 
+const double INF = 1e9;
+
 pair<double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, const vec2& c) {
-    //cout << "SuccPointAMF: e1(start, dir) = (" << e1.Start.x << ", " << e1.Start.y << "), (" << e1.Dir.x << ", " << e1.Dir.y << ")" << endl;
-    //cout << "SuccPointAMF: e2(start, dir) = (" << e2.Start.x << ", " << e2.Start.y << "), (" << e2.Dir.x << ", " << e2.Dir.y << ")" << endl;
     bool isReal = true;
 
     if (OrientedAngle(((e2.Start + e2.Dir * 0.5) - (e1.Start + e1.Dir * 0.5)), e2.Dir) * OrientedAngle(c, e2.Dir) < 0) {
@@ -13,15 +14,16 @@ pair<double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, 
     }
 
     vec2 cRot(c.y, -c.x);
-    //cout << "SuccPointAMF: cRot = " << cRot.x << " " << cRot.y << endl;
 
     double prod1 = e1.Dir * cRot;
     double prod2 = e2.Dir * cRot;
 
-    //cout << "SuccPointAMF: prod1 = " << prod1 << ", prod2 = " << prod2 << endl;
-
     if (fabs(prod2) < 0.0001) {
-        throw logic_error("Vector field is parallel to edge");
+        if (Strict) {
+            throw logic_error("Vector field is parallel to edge");
+        } else {
+            return make_pair(-INF - 1000, false);
+        }
     }
 
     double alpha = prod1 / prod2;
@@ -31,15 +33,15 @@ pair<double, bool> SuccPointAMF(const double x, const Edge& e1, const Edge& e2, 
 }
 
 pair<double, double> SuccInt(const double x1, const double x2, const Edge& e1, const Edge& e2, const vec2& c1, const vec2& c2) {
-    vector<pair<double, bool>> pointImages;
+    vector<pair<double, bool> > pointImages;
     pointImages.push_back(SuccPointAMF(x1, e1, e2, c1));
     pointImages.push_back(SuccPointAMF(x1, e1, e2, c2));
     pointImages.push_back(SuccPointAMF(x2, e1, e2, c1));
     pointImages.push_back(SuccPointAMF(x2, e1, e2, c2));
 
-    double minImaginaryPoint = 1e9;
-    double maxRealPoint = -1e9;
-    double minRealPoint = 1e9;
+    double minImaginaryPoint = INF;
+    double maxRealPoint = -INF;
+    double minRealPoint = INF;
     bool hasReal = false;
     bool hasImaginary = false;
 
@@ -54,15 +56,22 @@ pair<double, double> SuccInt(const double x1, const double x2, const Edge& e1, c
         }
     }
 
+    if (!Strict) {
+        if ((hasReal && minRealPoint < -INF) ||
+            (hasImaginary && minImaginaryPoint < -INF))
+        {
+            return make_pair(-1, -2);
+        }
+    }
+
     if (hasImaginary) {
         if (!hasReal) {
             return make_pair(-1, -2);
+        }
+        if (minImaginaryPoint < maxRealPoint) {
+            return make_pair(max(0.0, minRealPoint), 1.0);
         } else {
-            if (minImaginaryPoint < maxRealPoint) {
-                return make_pair(max(0.0, minRealPoint), 1.0);
-            } else {
-                return make_pair(0.0, min(1.0, maxRealPoint));
-            }
+            return make_pair(0.0, min(1.0, maxRealPoint));
         }
     }
 
@@ -73,11 +82,12 @@ double SuccPointAMFSigma(
     const double x,
     const vector<size_t>& sigma,
     const char type,
-    const SPDI& spdi) {
+    const SPDI& spdi
+) {
     double ans = x;
 
     for (size_t i = 0; i < sigma.size() - 1; ++i) {
-        if (type == 'R') { //right vector stored in first field of pair
+        if (type == 'R') { //right vector stored in first field of the pair
             ans = SuccInt(ans, ans, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.first, spdi.EdgesConnections[sigma[i]].second.first).first;
         } else if (type == 'L') {
             ans = SuccInt(ans, ans, spdi.Edges[sigma[i]], spdi.Edges[sigma[i + 1]], spdi.EdgesConnections[sigma[i]].second.second, spdi.EdgesConnections[sigma[i]].second.second).first;
