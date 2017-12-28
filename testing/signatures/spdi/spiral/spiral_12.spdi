@@ -1,0 +1,73 @@
+* Created by the perl mspdi library from ../spiral/spiral_12.mspdi
+
+
+Points:
+
+P_0_0. -100.000000, -100.000000
+P_1_0. 0.000000, -100.000000
+P_2_0. 100.000000, -100.000000
+P_0_1. -100.000000, -33.333333
+P_1_1. 0.000000, -33.333333
+P_2_1. 100.000000, -33.333333
+P_0_2. -100.000000, 33.333333
+P_1_2. 0.000000, 33.333333
+P_2_2. 100.000000, 33.333333
+P_0_3. -100.000000, 100.000000
+P_1_3. 0.000000, 100.000000
+P_2_3. 100.000000, 100.000000
+
+Vectors:
+
+Vl_0_0_up. -16.916667, -23.750000
+Vr_0_0_up. -16.750000, -24.583333
+Vl_0_0_down. 13.916667, -73.250000
+Vr_0_0_down. 15.750000, -74.416667
+Vl_1_0_up. -19.916667, -120.750000
+Vr_1_0_up. -17.750000, -123.583333
+Vl_1_0_down. 10.916667, -170.250000
+Vr_1_0_down. 14.750000, -173.416667
+Vl_0_1_up. 47.750000, -25.750000
+Vr_0_1_up. 49.250000, -25.250000
+Vl_0_1_down. 78.583333, -75.250000
+Vr_0_1_down. 81.750000, -75.083333
+Vl_1_1_up. 44.750000, -122.750000
+Vr_1_1_up. 48.250000, -124.250000
+Vl_1_1_down. 75.583333, -172.250000
+Vr_1_1_down. 80.750000, -174.083333
+Vl_0_2_up. 112.416667, -27.750000
+Vr_0_2_up. 115.250000, -25.916667
+Vl_0_2_down. 143.250000, -77.250000
+Vr_0_2_down. 147.750000, -75.750000
+Vl_1_2_up. 109.416667, -124.750000
+Vr_1_2_up. 114.250000, -124.916667
+Vl_1_2_down. 140.250000, -174.250000
+Vr_1_2_down. 146.750000, -174.750000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-100, -100)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (0, -33.3333333333333)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (0, -100)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (100, -33.3333333333333)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (-100, -33.3333333333333)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (0, 33.3333333333333)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (0, -33.3333333333333)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (100, 33.3333333333333)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing up whose lower left corner is at (-100, 33.3333333333333)
+P_0_2 : P_1_2 : P_0_3 : P_0_2, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing down whose top right corner is at (0, 100)
+P_1_3 : P_0_3 : P_1_2 : P_1_3, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing up whose lower left corner is at (0, 33.3333333333333)
+P_1_2 : P_2_2 : P_1_3 : P_1_2, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing down whose top right corner is at (100, 100)
+P_2_3 : P_1_3 : P_2_2 : P_2_3, Vl_1_2_up, Vr_1_2_up
+
+* End of spdifile

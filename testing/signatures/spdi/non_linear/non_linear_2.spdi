@@ -1,0 +1,54 @@
+* Created by the perl mspdi library from ./non_linear_2.mspdi
+
+
+Points:
+
+P_0_0. -5.000000, -5.000000
+P_1_0. 0.000000, -5.000000
+P_2_0. 5.000000, -5.000000
+P_0_1. -5.000000, 0.000000
+P_1_1. 0.000000, 0.000000
+P_2_1. 5.000000, 0.000000
+P_0_2. -5.000000, 5.000000
+P_1_2. 0.000000, 5.000000
+P_2_2. 5.000000, 5.000000
+
+Vectors:
+
+Vl_0_0_up. 1.000000, -3.750000
+Vr_0_0_up. 1.000000, -3.750000
+Vl_0_0_down. 1.000000, -6.250000
+Vr_0_0_down. 1.000000, -6.250000
+Vl_1_0_up. 1.000000, -41.750000
+Vr_1_0_up. 1.000000, -41.750000
+Vl_1_0_down. 1.000000, -25.583333
+Vr_1_0_down. 1.000000, -25.583333
+Vl_0_1_up. 1.000000, -1.150000
+Vr_0_1_up. 1.000000, -1.150000
+Vl_0_1_down. 1.000000, -2.964286
+Vr_0_1_down. 1.000000, -2.964286
+Vl_1_1_up. 1.000000, -8.750000
+Vr_1_1_up. 1.000000, -8.750000
+Vl_1_1_down. 1.000000, -11.250000
+Vr_1_1_down. 1.000000, -11.250000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-5, -5)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (0, 0)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (0, -5)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (5, 0)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (-5, 0)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (0, 5)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (0, 0)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (5, 5)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+
+* End of spdifile

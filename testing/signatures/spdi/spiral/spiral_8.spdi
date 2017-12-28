@@ -1,0 +1,54 @@
+* Created by the perl mspdi library from ../spiral/spiral_8.mspdi
+
+
+Points:
+
+P_0_0. -100.000000, -100.000000
+P_1_0. 0.000000, -100.000000
+P_2_0. 100.000000, -100.000000
+P_0_1. -100.000000, 0.000000
+P_1_1. 0.000000, 0.000000
+P_2_1. 100.000000, 0.000000
+P_0_2. -100.000000, 100.000000
+P_1_2. 0.000000, 100.000000
+P_2_2. 100.000000, 100.000000
+
+Vectors:
+
+Vl_0_0_up. 23.500000, -25.000000
+Vr_0_0_up. 24.500000, -25.000000
+Vl_0_0_down. 70.500000, -75.000000
+Vr_0_0_down. 73.500000, -75.000000
+Vl_1_0_up. 20.500000, -122.000000
+Vr_1_0_up. 23.500000, -124.000000
+Vl_1_0_down. 67.500000, -172.000000
+Vr_1_0_down. 72.500000, -174.000000
+Vl_0_1_up. 120.500000, -28.000000
+Vr_0_1_up. 123.500000, -26.000000
+Vl_0_1_down. 167.500000, -78.000000
+Vr_0_1_down. 172.500000, -76.000000
+Vl_1_1_up. 117.500000, -125.000000
+Vr_1_1_up. 122.500000, -125.000000
+Vl_1_1_down. 164.500000, -175.000000
+Vr_1_1_down. 171.500000, -175.000000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-100, -100)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (0, 0)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (0, -100)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (100, 0)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (-100, 0)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (0, 100)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (0, 0)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (100, 100)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+
+* End of spdifile

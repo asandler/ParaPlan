@@ -1,0 +1,101 @@
+* Created by the perl mspdi library from spiral.mspdi
+
+
+Points:
+
+P_0_0. -100.000000, -100.000000
+P_1_0. -33.333333, -100.000000
+P_2_0. 33.333333, -100.000000
+P_3_0. 100.000000, -100.000000
+P_0_1. -100.000000, -33.333333
+P_1_1. -33.333333, -33.333333
+P_2_1. 33.333333, -33.333333
+P_3_1. 100.000000, -33.333333
+P_0_2. -100.000000, 33.333333
+P_1_2. -33.333333, 33.333333
+P_2_2. 33.333333, 33.333333
+P_3_2. 100.000000, 33.333333
+P_0_3. -100.000000, 100.000000
+P_1_3. -33.333333, 100.000000
+P_2_3. 33.333333, 100.000000
+P_3_3. 100.000000, 100.000000
+
+Vectors:
+
+Vl_0_0_up. -15.666667, 16.666667
+Vr_0_0_up. -16.333333, 16.666667
+Vl_0_0_down. 15.666667, -16.666667
+Vr_0_0_down. 16.333333, -16.666667
+Vl_1_0_up. -17.666667, -48.000000
+Vr_1_0_up. -17.000000, -49.333333
+Vl_1_0_down. 13.666667, -81.333333
+Vr_1_0_down. 15.666667, -82.666667
+Vl_2_0_up. -19.666667, -112.666667
+Vr_2_0_up. -17.666667, -115.333333
+Vl_2_0_down. 11.666667, -146.000000
+Vr_2_0_down. 15.000000, -148.666667
+Vl_0_1_up. 49.000000, 14.666667
+Vr_0_1_up. 49.666667, 16.000000
+Vl_0_1_down. 80.333333, -18.666667
+Vr_0_1_down. 82.333333, -17.333333
+Vl_1_1_up. 47.000000, -50.000000
+Vr_1_1_up. 49.000000, -50.000000
+Vl_1_1_down. 78.333333, -83.333333
+Vr_1_1_down. 81.666667, -83.333333
+Vl_2_1_up. 45.000000, -114.666667
+Vr_2_1_up. 48.333333, -116.000000
+Vl_2_1_down. 76.333333, -148.000000
+Vr_2_1_down. 81.000000, -149.333333
+Vl_0_2_up. 113.666667, 12.666667
+Vr_0_2_up. 115.666667, 15.333333
+Vl_0_2_down. 145.000000, -20.666667
+Vr_0_2_down. 148.333333, -18.000000
+Vl_1_2_up. 111.666667, -52.000000
+Vr_1_2_up. 115.000000, -50.666667
+Vl_1_2_down. 143.000000, -85.333333
+Vr_1_2_down. 147.666667, -84.000000
+Vl_2_2_up. 109.666667, -116.666667
+Vr_2_2_up. 114.333333, -116.666667
+Vl_2_2_down. 141.000000, -150.000000
+Vr_2_2_down. 147.000000, -150.000000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-100, -100)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, -33.3333333333333)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, -100)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, -33.3333333333333)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, -100)
+P_2_0 : P_3_0 : P_2_1 : P_2_0, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing down whose top right corner is at (100, -33.3333333333333)
+P_3_1 : P_2_1 : P_3_0 : P_3_1, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing up whose lower left corner is at (-100, -33.3333333333333)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 33.3333333333333)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, -33.3333333333333)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 33.3333333333333)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, -33.3333333333333)
+P_2_1 : P_3_1 : P_2_2 : P_2_1, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing down whose top right corner is at (100, 33.3333333333333)
+P_3_2 : P_2_2 : P_3_1 : P_3_2, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing up whose lower left corner is at (-100, 33.3333333333333)
+P_0_2 : P_1_2 : P_0_3 : P_0_2, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing down whose top right corner is at (-33.3333333333333, 100)
+P_1_3 : P_0_3 : P_1_2 : P_1_3, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing up whose lower left corner is at (-33.3333333333333, 33.3333333333333)
+P_1_2 : P_2_2 : P_1_3 : P_1_2, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing down whose top right corner is at (33.3333333333333, 100)
+P_2_3 : P_1_3 : P_2_2 : P_2_3, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing up whose lower left corner is at (33.3333333333333, 33.3333333333333)
+P_2_2 : P_3_2 : P_2_3 : P_2_2, Vl_2_2_up, Vr_2_2_up
+* half rectangle pointing down whose top right corner is at (100, 100)
+P_3_3 : P_2_3 : P_3_2 : P_3_3, Vl_2_2_up, Vr_2_2_up
+
+* End of spdifile

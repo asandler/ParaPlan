@@ -1,0 +1,606 @@
+* Created by the perl mspdi library from focus.mspdi
+
+
+Points:
+
+P_0_0. 0.000000, 0.000000
+P_1_0. 0.500000, 0.000000
+P_2_0. 1.000000, 0.000000
+P_3_0. 1.500000, 0.000000
+P_4_0. 2.000000, 0.000000
+P_5_0. 2.500000, 0.000000
+P_6_0. 3.000000, 0.000000
+P_7_0. 3.500000, 0.000000
+P_8_0. 4.000000, 0.000000
+P_0_1. 0.000000, 0.500000
+P_1_1. 0.500000, 0.500000
+P_2_1. 1.000000, 0.500000
+P_3_1. 1.500000, 0.500000
+P_4_1. 2.000000, 0.500000
+P_5_1. 2.500000, 0.500000
+P_6_1. 3.000000, 0.500000
+P_7_1. 3.500000, 0.500000
+P_8_1. 4.000000, 0.500000
+P_0_2. 0.000000, 1.000000
+P_1_2. 0.500000, 1.000000
+P_2_2. 1.000000, 1.000000
+P_3_2. 1.500000, 1.000000
+P_4_2. 2.000000, 1.000000
+P_5_2. 2.500000, 1.000000
+P_6_2. 3.000000, 1.000000
+P_7_2. 3.500000, 1.000000
+P_8_2. 4.000000, 1.000000
+P_0_3. 0.000000, 1.500000
+P_1_3. 0.500000, 1.500000
+P_2_3. 1.000000, 1.500000
+P_3_3. 1.500000, 1.500000
+P_4_3. 2.000000, 1.500000
+P_5_3. 2.500000, 1.500000
+P_6_3. 3.000000, 1.500000
+P_7_3. 3.500000, 1.500000
+P_8_3. 4.000000, 1.500000
+P_0_4. 0.000000, 2.000000
+P_1_4. 0.500000, 2.000000
+P_2_4. 1.000000, 2.000000
+P_3_4. 1.500000, 2.000000
+P_4_4. 2.000000, 2.000000
+P_5_4. 2.500000, 2.000000
+P_6_4. 3.000000, 2.000000
+P_7_4. 3.500000, 2.000000
+P_8_4. 4.000000, 2.000000
+P_0_5. 0.000000, 2.500000
+P_1_5. 0.500000, 2.500000
+P_2_5. 1.000000, 2.500000
+P_3_5. 1.500000, 2.500000
+P_4_5. 2.000000, 2.500000
+P_5_5. 2.500000, 2.500000
+P_6_5. 3.000000, 2.500000
+P_7_5. 3.500000, 2.500000
+P_8_5. 4.000000, 2.500000
+P_0_6. 0.000000, 3.000000
+P_1_6. 0.500000, 3.000000
+P_2_6. 1.000000, 3.000000
+P_3_6. 1.500000, 3.000000
+P_4_6. 2.000000, 3.000000
+P_5_6. 2.500000, 3.000000
+P_6_6. 3.000000, 3.000000
+P_7_6. 3.500000, 3.000000
+P_8_6. 4.000000, 3.000000
+P_0_7. 0.000000, 3.500000
+P_1_7. 0.500000, 3.500000
+P_2_7. 1.000000, 3.500000
+P_3_7. 1.500000, 3.500000
+P_4_7. 2.000000, 3.500000
+P_5_7. 2.500000, 3.500000
+P_6_7. 3.000000, 3.500000
+P_7_7. 3.500000, 3.500000
+P_8_7. 4.000000, 3.500000
+P_0_8. 0.000000, 4.000000
+P_1_8. 0.500000, 4.000000
+P_2_8. 1.000000, 4.000000
+P_3_8. 1.500000, 4.000000
+P_4_8. 2.000000, 4.000000
+P_5_8. 2.500000, 4.000000
+P_6_8. 3.000000, 4.000000
+P_7_8. 3.500000, 4.000000
+P_8_8. 4.000000, 4.000000
+
+Vectors:
+
+Vl_0_0_up. 0.000000, 1.250000
+Vr_0_0_up. 0.000000, 1.250000
+Vl_0_0_down. 0.000000, 1.750000
+Vr_0_0_down. 0.000000, 1.750000
+Vl_1_0_up. 1.000000, 3.500000
+Vr_1_0_up. 1.000000, 3.500000
+Vl_1_0_down. 1.000000, 4.500000
+Vr_1_0_down. 1.000000, 4.500000
+Vl_2_0_up. 1.000000, 2.250000
+Vr_2_0_up. 1.000000, 2.250000
+Vl_2_0_down. 1.000000, 2.750000
+Vr_2_0_down. 1.000000, 2.750000
+Vl_3_0_up. 1.000000, 1.833333
+Vr_3_0_up. 1.000000, 1.833333
+Vl_3_0_down. 1.000000, 2.166667
+Vr_3_0_down. 1.000000, 2.166667
+Vl_4_0_up. 1.000000, 1.625000
+Vr_4_0_up. 1.000000, 1.625000
+Vl_4_0_down. 1.000000, 1.875000
+Vr_4_0_down. 1.000000, 1.875000
+Vl_5_0_up. 1.000000, 1.500000
+Vr_5_0_up. 1.000000, 1.500000
+Vl_5_0_down. 1.000000, 1.700000
+Vr_5_0_down. 1.000000, 1.700000
+Vl_6_0_up. 1.000000, 1.416667
+Vr_6_0_up. 1.000000, 1.416667
+Vl_6_0_down. 1.000000, 1.583333
+Vr_6_0_down. 1.000000, 1.583333
+Vl_7_0_up. 1.000000, 1.357143
+Vr_7_0_up. 1.000000, 1.357143
+Vl_7_0_down. 1.000000, 1.500000
+Vr_7_0_down. 1.000000, 1.500000
+Vl_0_1_up. 1.000000, -3.500000
+Vr_0_1_up. 1.000000, -3.500000
+Vl_0_1_down. 1.000000, -4.500000
+Vr_0_1_down. 1.000000, -4.500000
+Vl_1_1_up. 0.000000, 2.250000
+Vr_1_1_up. 0.000000, 2.250000
+Vl_1_1_down. 0.000000, 2.750000
+Vr_1_1_down. 0.000000, 2.750000
+Vl_2_1_up. 1.000000, 5.500000
+Vr_2_1_up. 1.000000, 5.500000
+Vl_2_1_down. 1.000000, 6.500000
+Vr_2_1_down. 1.000000, 6.500000
+Vl_3_1_up. 1.000000, 3.250000
+Vr_3_1_up. 1.000000, 3.250000
+Vl_3_1_down. 1.000000, 3.750000
+Vr_3_1_down. 1.000000, 3.750000
+Vl_4_1_up. 1.000000, 2.500000
+Vr_4_1_up. 1.000000, 2.500000
+Vl_4_1_down. 1.000000, 2.833333
+Vr_4_1_down. 1.000000, 2.833333
+Vl_5_1_up. 1.000000, 2.125000
+Vr_5_1_up. 1.000000, 2.125000
+Vl_5_1_down. 1.000000, 2.375000
+Vr_5_1_down. 1.000000, 2.375000
+Vl_6_1_up. 1.000000, 1.900000
+Vr_6_1_up. 1.000000, 1.900000
+Vl_6_1_down. 1.000000, 2.100000
+Vr_6_1_down. 1.000000, 2.100000
+Vl_7_1_up. 1.000000, 1.750000
+Vr_7_1_up. 1.000000, 1.750000
+Vl_7_1_down. 1.000000, 1.916667
+Vr_7_1_down. 1.000000, 1.916667
+Vl_0_2_up. 1.000000, -2.250000
+Vr_0_2_up. 1.000000, -2.250000
+Vl_0_2_down. 1.000000, -2.750000
+Vr_0_2_down. 1.000000, -2.750000
+Vl_1_2_up. 1.000000, -5.500000
+Vr_1_2_up. 1.000000, -5.500000
+Vl_1_2_down. 1.000000, -6.500000
+Vr_1_2_down. 1.000000, -6.500000
+Vl_2_2_up. 0.000000, 3.250000
+Vr_2_2_up. 0.000000, 3.250000
+Vl_2_2_down. 0.000000, 3.750000
+Vr_2_2_down. 0.000000, 3.750000
+Vl_3_2_up. 1.000000, 7.500000
+Vr_3_2_up. 1.000000, 7.500000
+Vl_3_2_down. 1.000000, 8.500000
+Vr_3_2_down. 1.000000, 8.500000
+Vl_4_2_up. 1.000000, 4.250000
+Vr_4_2_up. 1.000000, 4.250000
+Vl_4_2_down. 1.000000, 4.750000
+Vr_4_2_down. 1.000000, 4.750000
+Vl_5_2_up. 1.000000, 3.166667
+Vr_5_2_up. 1.000000, 3.166667
+Vl_5_2_down. 1.000000, 3.500000
+Vr_5_2_down. 1.000000, 3.500000
+Vl_6_2_up. 1.000000, 2.625000
+Vr_6_2_up. 1.000000, 2.625000
+Vl_6_2_down. 1.000000, 2.875000
+Vr_6_2_down. 1.000000, 2.875000
+Vl_7_2_up. 1.000000, 2.300000
+Vr_7_2_up. 1.000000, 2.300000
+Vl_7_2_down. 1.000000, 2.500000
+Vr_7_2_down. 1.000000, 2.500000
+Vl_0_3_up. 1.000000, -1.833333
+Vr_0_3_up. 1.000000, -1.833333
+Vl_0_3_down. 1.000000, -2.166667
+Vr_0_3_down. 1.000000, -2.166667
+Vl_1_3_up. 1.000000, -3.250000
+Vr_1_3_up. 1.000000, -3.250000
+Vl_1_3_down. 1.000000, -3.750000
+Vr_1_3_down. 1.000000, -3.750000
+Vl_2_3_up. 1.000000, -7.500000
+Vr_2_3_up. 1.000000, -7.500000
+Vl_2_3_down. 1.000000, -8.500000
+Vr_2_3_down. 1.000000, -8.500000
+Vl_3_3_up. 0.000000, 4.250000
+Vr_3_3_up. 0.000000, 4.250000
+Vl_3_3_down. 0.000000, 4.750000
+Vr_3_3_down. 0.000000, 4.750000
+Vl_4_3_up. 1.000000, 9.500000
+Vr_4_3_up. 1.000000, 9.500000
+Vl_4_3_down. 1.000000, 10.500000
+Vr_4_3_down. 1.000000, 10.500000
+Vl_5_3_up. 1.000000, 5.250000
+Vr_5_3_up. 1.000000, 5.250000
+Vl_5_3_down. 1.000000, 5.750000
+Vr_5_3_down. 1.000000, 5.750000
+Vl_6_3_up. 1.000000, 3.833333
+Vr_6_3_up. 1.000000, 3.833333
+Vl_6_3_down. 1.000000, 4.166667
+Vr_6_3_down. 1.000000, 4.166667
+Vl_7_3_up. 1.000000, 3.125000
+Vr_7_3_up. 1.000000, 3.125000
+Vl_7_3_down. 1.000000, 3.375000
+Vr_7_3_down. 1.000000, 3.375000
+Vl_0_4_up. 1.000000, -1.625000
+Vr_0_4_up. 1.000000, -1.625000
+Vl_0_4_down. 1.000000, -1.875000
+Vr_0_4_down. 1.000000, -1.875000
+Vl_1_4_up. 1.000000, -2.500000
+Vr_1_4_up. 1.000000, -2.500000
+Vl_1_4_down. 1.000000, -2.833333
+Vr_1_4_down. 1.000000, -2.833333
+Vl_2_4_up. 1.000000, -4.250000
+Vr_2_4_up. 1.000000, -4.250000
+Vl_2_4_down. 1.000000, -4.750000
+Vr_2_4_down. 1.000000, -4.750000
+Vl_3_4_up. 1.000000, -9.500000
+Vr_3_4_up. 1.000000, -9.500000
+Vl_3_4_down. 1.000000, -10.500000
+Vr_3_4_down. 1.000000, -10.500000
+Vl_4_4_up. 0.000000, 5.250000
+Vr_4_4_up. 0.000000, 5.250000
+Vl_4_4_down. 0.000000, 5.750000
+Vr_4_4_down. 0.000000, 5.750000
+Vl_5_4_up. 1.000000, 11.500000
+Vr_5_4_up. 1.000000, 11.500000
+Vl_5_4_down. 1.000000, 12.500000
+Vr_5_4_down. 1.000000, 12.500000
+Vl_6_4_up. 1.000000, 6.250000
+Vr_6_4_up. 1.000000, 6.250000
+Vl_6_4_down. 1.000000, 6.750000
+Vr_6_4_down. 1.000000, 6.750000
+Vl_7_4_up. 1.000000, 4.500000
+Vr_7_4_up. 1.000000, 4.500000
+Vl_7_4_down. 1.000000, 4.833333
+Vr_7_4_down. 1.000000, 4.833333
+Vl_0_5_up. 1.000000, -1.500000
+Vr_0_5_up. 1.000000, -1.500000
+Vl_0_5_down. 1.000000, -1.700000
+Vr_0_5_down. 1.000000, -1.700000
+Vl_1_5_up. 1.000000, -2.125000
+Vr_1_5_up. 1.000000, -2.125000
+Vl_1_5_down. 1.000000, -2.375000
+Vr_1_5_down. 1.000000, -2.375000
+Vl_2_5_up. 1.000000, -3.166667
+Vr_2_5_up. 1.000000, -3.166667
+Vl_2_5_down. 1.000000, -3.500000
+Vr_2_5_down. 1.000000, -3.500000
+Vl_3_5_up. 1.000000, -5.250000
+Vr_3_5_up. 1.000000, -5.250000
+Vl_3_5_down. 1.000000, -5.750000
+Vr_3_5_down. 1.000000, -5.750000
+Vl_4_5_up. 1.000000, -11.500000
+Vr_4_5_up. 1.000000, -11.500000
+Vl_4_5_down. 1.000000, -12.500000
+Vr_4_5_down. 1.000000, -12.500000
+Vl_5_5_up. 0.000000, 6.250000
+Vr_5_5_up. 0.000000, 6.250000
+Vl_5_5_down. 0.000000, 6.750000
+Vr_5_5_down. 0.000000, 6.750000
+Vl_6_5_up. 1.000000, 13.500000
+Vr_6_5_up. 1.000000, 13.500000
+Vl_6_5_down. 1.000000, 14.500000
+Vr_6_5_down. 1.000000, 14.500000
+Vl_7_5_up. 1.000000, 7.250000
+Vr_7_5_up. 1.000000, 7.250000
+Vl_7_5_down. 1.000000, 7.750000
+Vr_7_5_down. 1.000000, 7.750000
+Vl_0_6_up. 1.000000, -1.416667
+Vr_0_6_up. 1.000000, -1.416667
+Vl_0_6_down. 1.000000, -1.583333
+Vr_0_6_down. 1.000000, -1.583333
+Vl_1_6_up. 1.000000, -1.900000
+Vr_1_6_up. 1.000000, -1.900000
+Vl_1_6_down. 1.000000, -2.100000
+Vr_1_6_down. 1.000000, -2.100000
+Vl_2_6_up. 1.000000, -2.625000
+Vr_2_6_up. 1.000000, -2.625000
+Vl_2_6_down. 1.000000, -2.875000
+Vr_2_6_down. 1.000000, -2.875000
+Vl_3_6_up. 1.000000, -3.833333
+Vr_3_6_up. 1.000000, -3.833333
+Vl_3_6_down. 1.000000, -4.166667
+Vr_3_6_down. 1.000000, -4.166667
+Vl_4_6_up. 1.000000, -6.250000
+Vr_4_6_up. 1.000000, -6.250000
+Vl_4_6_down. 1.000000, -6.750000
+Vr_4_6_down. 1.000000, -6.750000
+Vl_5_6_up. 1.000000, -13.500000
+Vr_5_6_up. 1.000000, -13.500000
+Vl_5_6_down. 1.000000, -14.500000
+Vr_5_6_down. 1.000000, -14.500000
+Vl_6_6_up. 0.000000, 7.250000
+Vr_6_6_up. 0.000000, 7.250000
+Vl_6_6_down. 0.000000, 7.750000
+Vr_6_6_down. 0.000000, 7.750000
+Vl_7_6_up. 1.000000, 15.500000
+Vr_7_6_up. 1.000000, 15.500000
+Vl_7_6_down. 1.000000, 16.500000
+Vr_7_6_down. 1.000000, 16.500000
+Vl_0_7_up. 1.000000, -1.357143
+Vr_0_7_up. 1.000000, -1.357143
+Vl_0_7_down. 1.000000, -1.500000
+Vr_0_7_down. 1.000000, -1.500000
+Vl_1_7_up. 1.000000, -1.750000
+Vr_1_7_up. 1.000000, -1.750000
+Vl_1_7_down. 1.000000, -1.916667
+Vr_1_7_down. 1.000000, -1.916667
+Vl_2_7_up. 1.000000, -2.300000
+Vr_2_7_up. 1.000000, -2.300000
+Vl_2_7_down. 1.000000, -2.500000
+Vr_2_7_down. 1.000000, -2.500000
+Vl_3_7_up. 1.000000, -3.125000
+Vr_3_7_up. 1.000000, -3.125000
+Vl_3_7_down. 1.000000, -3.375000
+Vr_3_7_down. 1.000000, -3.375000
+Vl_4_7_up. 1.000000, -4.500000
+Vr_4_7_up. 1.000000, -4.500000
+Vl_4_7_down. 1.000000, -4.833333
+Vr_4_7_down. 1.000000, -4.833333
+Vl_5_7_up. 1.000000, -7.250000
+Vr_5_7_up. 1.000000, -7.250000
+Vl_5_7_down. 1.000000, -7.750000
+Vr_5_7_down. 1.000000, -7.750000
+Vl_6_7_up. 1.000000, -15.500000
+Vr_6_7_up. 1.000000, -15.500000
+Vl_6_7_down. 1.000000, -16.500000
+Vr_6_7_down. 1.000000, -16.500000
+Vl_7_7_up. 0.000000, 8.250000
+Vr_7_7_up. 0.000000, 8.250000
+Vl_7_7_down. 0.000000, 8.750000
+Vr_7_7_down. 0.000000, 8.750000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (0, 0)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (0.5, 0.5)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing up whose lower left corner is at (0.5, 0)
+P_1_0 : P_2_0 : P_1_1 : P_1_0, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing down whose top right corner is at (1, 0.5)
+P_2_1 : P_1_1 : P_2_0 : P_2_1, Vl_1_0_up, Vr_1_0_up
+* half rectangle pointing up whose lower left corner is at (1, 0)
+P_2_0 : P_3_0 : P_2_1 : P_2_0, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing down whose top right corner is at (1.5, 0.5)
+P_3_1 : P_2_1 : P_3_0 : P_3_1, Vl_2_0_up, Vr_2_0_up
+* half rectangle pointing up whose lower left corner is at (1.5, 0)
+P_3_0 : P_4_0 : P_3_1 : P_3_0, Vl_3_0_up, Vr_3_0_up
+* half rectangle pointing down whose top right corner is at (2, 0.5)
+P_4_1 : P_3_1 : P_4_0 : P_4_1, Vl_3_0_up, Vr_3_0_up
+* half rectangle pointing up whose lower left corner is at (2, 0)
+P_4_0 : P_5_0 : P_4_1 : P_4_0, Vl_4_0_up, Vr_4_0_up
+* half rectangle pointing down whose top right corner is at (2.5, 0.5)
+P_5_1 : P_4_1 : P_5_0 : P_5_1, Vl_4_0_up, Vr_4_0_up
+* half rectangle pointing up whose lower left corner is at (2.5, 0)
+P_5_0 : P_6_0 : P_5_1 : P_5_0, Vl_5_0_up, Vr_5_0_up
+* half rectangle pointing down whose top right corner is at (3, 0.5)
+P_6_1 : P_5_1 : P_6_0 : P_6_1, Vl_5_0_up, Vr_5_0_up
+* half rectangle pointing up whose lower left corner is at (3, 0)
+P_6_0 : P_7_0 : P_6_1 : P_6_0, Vl_6_0_up, Vr_6_0_up
+* half rectangle pointing down whose top right corner is at (3.5, 0.5)
+P_7_1 : P_6_1 : P_7_0 : P_7_1, Vl_6_0_up, Vr_6_0_up
+* half rectangle pointing up whose lower left corner is at (3.5, 0)
+P_7_0 : P_8_0 : P_7_1 : P_7_0, Vl_7_0_up, Vr_7_0_up
+* half rectangle pointing down whose top right corner is at (4, 0.5)
+P_8_1 : P_7_1 : P_8_0 : P_8_1, Vl_7_0_up, Vr_7_0_up
+* half rectangle pointing up whose lower left corner is at (0, 0.5)
+P_0_1 : P_1_1 : P_0_2 : P_0_1, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing down whose top right corner is at (0.5, 1)
+P_1_2 : P_0_2 : P_1_1 : P_1_2, Vl_0_1_up, Vr_0_1_up
+* half rectangle pointing up whose lower left corner is at (0.5, 0.5)
+P_1_1 : P_2_1 : P_1_2 : P_1_1, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing down whose top right corner is at (1, 1)
+P_2_2 : P_1_2 : P_2_1 : P_2_2, Vl_1_1_up, Vr_1_1_up
+* half rectangle pointing up whose lower left corner is at (1, 0.5)
+P_2_1 : P_3_1 : P_2_2 : P_2_1, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing down whose top right corner is at (1.5, 1)
+P_3_2 : P_2_2 : P_3_1 : P_3_2, Vl_2_1_up, Vr_2_1_up
+* half rectangle pointing up whose lower left corner is at (1.5, 0.5)
+P_3_1 : P_4_1 : P_3_2 : P_3_1, Vl_3_1_up, Vr_3_1_up
+* half rectangle pointing down whose top right corner is at (2, 1)
+P_4_2 : P_3_2 : P_4_1 : P_4_2, Vl_3_1_up, Vr_3_1_up
+* half rectangle pointing up whose lower left corner is at (2, 0.5)
+P_4_1 : P_5_1 : P_4_2 : P_4_1, Vl_4_1_up, Vr_4_1_up
+* half rectangle pointing down whose top right corner is at (2.5, 1)
+P_5_2 : P_4_2 : P_5_1 : P_5_2, Vl_4_1_up, Vr_4_1_up
+* half rectangle pointing up whose lower left corner is at (2.5, 0.5)
+P_5_1 : P_6_1 : P_5_2 : P_5_1, Vl_5_1_up, Vr_5_1_up
+* half rectangle pointing down whose top right corner is at (3, 1)
+P_6_2 : P_5_2 : P_6_1 : P_6_2, Vl_5_1_up, Vr_5_1_up
+* half rectangle pointing up whose lower left corner is at (3, 0.5)
+P_6_1 : P_7_1 : P_6_2 : P_6_1, Vl_6_1_up, Vr_6_1_up
+* half rectangle pointing down whose top right corner is at (3.5, 1)
+P_7_2 : P_6_2 : P_7_1 : P_7_2, Vl_6_1_up, Vr_6_1_up
+* half rectangle pointing up whose lower left corner is at (3.5, 0.5)
+P_7_1 : P_8_1 : P_7_2 : P_7_1, Vl_7_1_up, Vr_7_1_up
+* half rectangle pointing down whose top right corner is at (4, 1)
+P_8_2 : P_7_2 : P_8_1 : P_8_2, Vl_7_1_up, Vr_7_1_up
+* half rectangle pointing up whose lower left corner is at (0, 1)
+P_0_2 : P_1_2 : P_0_3 : P_0_2, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing down whose top right corner is at (0.5, 1.5)
+P_1_3 : P_0_3 : P_1_2 : P_1_3, Vl_0_2_up, Vr_0_2_up
+* half rectangle pointing up whose lower left corner is at (0.5, 1)
+P_1_2 : P_2_2 : P_1_3 : P_1_2, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing down whose top right corner is at (1, 1.5)
+P_2_3 : P_1_3 : P_2_2 : P_2_3, Vl_1_2_up, Vr_1_2_up
+* half rectangle pointing up whose lower left corner is at (1, 1)
+P_2_2 : P_3_2 : P_2_3 : P_2_2, Vl_2_2_up, Vr_2_2_up
+* half rectangle pointing down whose top right corner is at (1.5, 1.5)
+P_3_3 : P_2_3 : P_3_2 : P_3_3, Vl_2_2_up, Vr_2_2_up
+* half rectangle pointing up whose lower left corner is at (1.5, 1)
+P_3_2 : P_4_2 : P_3_3 : P_3_2, Vl_3_2_up, Vr_3_2_up
+* half rectangle pointing down whose top right corner is at (2, 1.5)
+P_4_3 : P_3_3 : P_4_2 : P_4_3, Vl_3_2_up, Vr_3_2_up
+* half rectangle pointing up whose lower left corner is at (2, 1)
+P_4_2 : P_5_2 : P_4_3 : P_4_2, Vl_4_2_up, Vr_4_2_up
+* half rectangle pointing down whose top right corner is at (2.5, 1.5)
+P_5_3 : P_4_3 : P_5_2 : P_5_3, Vl_4_2_up, Vr_4_2_up
+* half rectangle pointing up whose lower left corner is at (2.5, 1)
+P_5_2 : P_6_2 : P_5_3 : P_5_2, Vl_5_2_up, Vr_5_2_up
+* half rectangle pointing down whose top right corner is at (3, 1.5)
+P_6_3 : P_5_3 : P_6_2 : P_6_3, Vl_5_2_up, Vr_5_2_up
+* half rectangle pointing up whose lower left corner is at (3, 1)
+P_6_2 : P_7_2 : P_6_3 : P_6_2, Vl_6_2_up, Vr_6_2_up
+* half rectangle pointing down whose top right corner is at (3.5, 1.5)
+P_7_3 : P_6_3 : P_7_2 : P_7_3, Vl_6_2_up, Vr_6_2_up
+* half rectangle pointing up whose lower left corner is at (3.5, 1)
+P_7_2 : P_8_2 : P_7_3 : P_7_2, Vl_7_2_up, Vr_7_2_up
+* half rectangle pointing down whose top right corner is at (4, 1.5)
+P_8_3 : P_7_3 : P_8_2 : P_8_3, Vl_7_2_up, Vr_7_2_up
+* half rectangle pointing up whose lower left corner is at (0, 1.5)
+P_0_3 : P_1_3 : P_0_4 : P_0_3, Vl_0_3_up, Vr_0_3_up
+* half rectangle pointing down whose top right corner is at (0.5, 2)
+P_1_4 : P_0_4 : P_1_3 : P_1_4, Vl_0_3_up, Vr_0_3_up
+* half rectangle pointing up whose lower left corner is at (0.5, 1.5)
+P_1_3 : P_2_3 : P_1_4 : P_1_3, Vl_1_3_up, Vr_1_3_up
+* half rectangle pointing down whose top right corner is at (1, 2)
+P_2_4 : P_1_4 : P_2_3 : P_2_4, Vl_1_3_up, Vr_1_3_up
+* half rectangle pointing up whose lower left corner is at (1, 1.5)
+P_2_3 : P_3_3 : P_2_4 : P_2_3, Vl_2_3_up, Vr_2_3_up
+* half rectangle pointing down whose top right corner is at (1.5, 2)
+P_3_4 : P_2_4 : P_3_3 : P_3_4, Vl_2_3_up, Vr_2_3_up
+* half rectangle pointing up whose lower left corner is at (1.5, 1.5)
+P_3_3 : P_4_3 : P_3_4 : P_3_3, Vl_3_3_up, Vr_3_3_up
+* half rectangle pointing down whose top right corner is at (2, 2)
+P_4_4 : P_3_4 : P_4_3 : P_4_4, Vl_3_3_up, Vr_3_3_up
+* half rectangle pointing up whose lower left corner is at (2, 1.5)
+P_4_3 : P_5_3 : P_4_4 : P_4_3, Vl_4_3_up, Vr_4_3_up
+* half rectangle pointing down whose top right corner is at (2.5, 2)
+P_5_4 : P_4_4 : P_5_3 : P_5_4, Vl_4_3_up, Vr_4_3_up
+* half rectangle pointing up whose lower left corner is at (2.5, 1.5)
+P_5_3 : P_6_3 : P_5_4 : P_5_3, Vl_5_3_up, Vr_5_3_up
+* half rectangle pointing down whose top right corner is at (3, 2)
+P_6_4 : P_5_4 : P_6_3 : P_6_4, Vl_5_3_up, Vr_5_3_up
+* half rectangle pointing up whose lower left corner is at (3, 1.5)
+P_6_3 : P_7_3 : P_6_4 : P_6_3, Vl_6_3_up, Vr_6_3_up
+* half rectangle pointing down whose top right corner is at (3.5, 2)
+P_7_4 : P_6_4 : P_7_3 : P_7_4, Vl_6_3_up, Vr_6_3_up
+* half rectangle pointing up whose lower left corner is at (3.5, 1.5)
+P_7_3 : P_8_3 : P_7_4 : P_7_3, Vl_7_3_up, Vr_7_3_up
+* half rectangle pointing down whose top right corner is at (4, 2)
+P_8_4 : P_7_4 : P_8_3 : P_8_4, Vl_7_3_up, Vr_7_3_up
+* half rectangle pointing up whose lower left corner is at (0, 2)
+P_0_4 : P_1_4 : P_0_5 : P_0_4, Vl_0_4_up, Vr_0_4_up
+* half rectangle pointing down whose top right corner is at (0.5, 2.5)
+P_1_5 : P_0_5 : P_1_4 : P_1_5, Vl_0_4_up, Vr_0_4_up
+* half rectangle pointing up whose lower left corner is at (0.5, 2)
+P_1_4 : P_2_4 : P_1_5 : P_1_4, Vl_1_4_up, Vr_1_4_up
+* half rectangle pointing down whose top right corner is at (1, 2.5)
+P_2_5 : P_1_5 : P_2_4 : P_2_5, Vl_1_4_up, Vr_1_4_up
+* half rectangle pointing up whose lower left corner is at (1, 2)
+P_2_4 : P_3_4 : P_2_5 : P_2_4, Vl_2_4_up, Vr_2_4_up
+* half rectangle pointing down whose top right corner is at (1.5, 2.5)
+P_3_5 : P_2_5 : P_3_4 : P_3_5, Vl_2_4_up, Vr_2_4_up
+* half rectangle pointing up whose lower left corner is at (1.5, 2)
+P_3_4 : P_4_4 : P_3_5 : P_3_4, Vl_3_4_up, Vr_3_4_up
+* half rectangle pointing down whose top right corner is at (2, 2.5)
+P_4_5 : P_3_5 : P_4_4 : P_4_5, Vl_3_4_up, Vr_3_4_up
+* half rectangle pointing up whose lower left corner is at (2, 2)
+P_4_4 : P_5_4 : P_4_5 : P_4_4, Vl_4_4_up, Vr_4_4_up
+* half rectangle pointing down whose top right corner is at (2.5, 2.5)
+P_5_5 : P_4_5 : P_5_4 : P_5_5, Vl_4_4_up, Vr_4_4_up
+* half rectangle pointing up whose lower left corner is at (2.5, 2)
+P_5_4 : P_6_4 : P_5_5 : P_5_4, Vl_5_4_up, Vr_5_4_up
+* half rectangle pointing down whose top right corner is at (3, 2.5)
+P_6_5 : P_5_5 : P_6_4 : P_6_5, Vl_5_4_up, Vr_5_4_up
+* half rectangle pointing up whose lower left corner is at (3, 2)
+P_6_4 : P_7_4 : P_6_5 : P_6_4, Vl_6_4_up, Vr_6_4_up
+* half rectangle pointing down whose top right corner is at (3.5, 2.5)
+P_7_5 : P_6_5 : P_7_4 : P_7_5, Vl_6_4_up, Vr_6_4_up
+* half rectangle pointing up whose lower left corner is at (3.5, 2)
+P_7_4 : P_8_4 : P_7_5 : P_7_4, Vl_7_4_up, Vr_7_4_up
+* half rectangle pointing down whose top right corner is at (4, 2.5)
+P_8_5 : P_7_5 : P_8_4 : P_8_5, Vl_7_4_up, Vr_7_4_up
+* half rectangle pointing up whose lower left corner is at (0, 2.5)
+P_0_5 : P_1_5 : P_0_6 : P_0_5, Vl_0_5_up, Vr_0_5_up
+* half rectangle pointing down whose top right corner is at (0.5, 3)
+P_1_6 : P_0_6 : P_1_5 : P_1_6, Vl_0_5_up, Vr_0_5_up
+* half rectangle pointing up whose lower left corner is at (0.5, 2.5)
+P_1_5 : P_2_5 : P_1_6 : P_1_5, Vl_1_5_up, Vr_1_5_up
+* half rectangle pointing down whose top right corner is at (1, 3)
+P_2_6 : P_1_6 : P_2_5 : P_2_6, Vl_1_5_up, Vr_1_5_up
+* half rectangle pointing up whose lower left corner is at (1, 2.5)
+P_2_5 : P_3_5 : P_2_6 : P_2_5, Vl_2_5_up, Vr_2_5_up
+* half rectangle pointing down whose top right corner is at (1.5, 3)
+P_3_6 : P_2_6 : P_3_5 : P_3_6, Vl_2_5_up, Vr_2_5_up
+* half rectangle pointing up whose lower left corner is at (1.5, 2.5)
+P_3_5 : P_4_5 : P_3_6 : P_3_5, Vl_3_5_up, Vr_3_5_up
+* half rectangle pointing down whose top right corner is at (2, 3)
+P_4_6 : P_3_6 : P_4_5 : P_4_6, Vl_3_5_up, Vr_3_5_up
+* half rectangle pointing up whose lower left corner is at (2, 2.5)
+P_4_5 : P_5_5 : P_4_6 : P_4_5, Vl_4_5_up, Vr_4_5_up
+* half rectangle pointing down whose top right corner is at (2.5, 3)
+P_5_6 : P_4_6 : P_5_5 : P_5_6, Vl_4_5_up, Vr_4_5_up
+* half rectangle pointing up whose lower left corner is at (2.5, 2.5)
+P_5_5 : P_6_5 : P_5_6 : P_5_5, Vl_5_5_up, Vr_5_5_up
+* half rectangle pointing down whose top right corner is at (3, 3)
+P_6_6 : P_5_6 : P_6_5 : P_6_6, Vl_5_5_up, Vr_5_5_up
+* half rectangle pointing up whose lower left corner is at (3, 2.5)
+P_6_5 : P_7_5 : P_6_6 : P_6_5, Vl_6_5_up, Vr_6_5_up
+* half rectangle pointing down whose top right corner is at (3.5, 3)
+P_7_6 : P_6_6 : P_7_5 : P_7_6, Vl_6_5_up, Vr_6_5_up
+* half rectangle pointing up whose lower left corner is at (3.5, 2.5)
+P_7_5 : P_8_5 : P_7_6 : P_7_5, Vl_7_5_up, Vr_7_5_up
+* half rectangle pointing down whose top right corner is at (4, 3)
+P_8_6 : P_7_6 : P_8_5 : P_8_6, Vl_7_5_up, Vr_7_5_up
+* half rectangle pointing up whose lower left corner is at (0, 3)
+P_0_6 : P_1_6 : P_0_7 : P_0_6, Vl_0_6_up, Vr_0_6_up
+* half rectangle pointing down whose top right corner is at (0.5, 3.5)
+P_1_7 : P_0_7 : P_1_6 : P_1_7, Vl_0_6_up, Vr_0_6_up
+* half rectangle pointing up whose lower left corner is at (0.5, 3)
+P_1_6 : P_2_6 : P_1_7 : P_1_6, Vl_1_6_up, Vr_1_6_up
+* half rectangle pointing down whose top right corner is at (1, 3.5)
+P_2_7 : P_1_7 : P_2_6 : P_2_7, Vl_1_6_up, Vr_1_6_up
+* half rectangle pointing up whose lower left corner is at (1, 3)
+P_2_6 : P_3_6 : P_2_7 : P_2_6, Vl_2_6_up, Vr_2_6_up
+* half rectangle pointing down whose top right corner is at (1.5, 3.5)
+P_3_7 : P_2_7 : P_3_6 : P_3_7, Vl_2_6_up, Vr_2_6_up
+* half rectangle pointing up whose lower left corner is at (1.5, 3)
+P_3_6 : P_4_6 : P_3_7 : P_3_6, Vl_3_6_up, Vr_3_6_up
+* half rectangle pointing down whose top right corner is at (2, 3.5)
+P_4_7 : P_3_7 : P_4_6 : P_4_7, Vl_3_6_up, Vr_3_6_up
+* half rectangle pointing up whose lower left corner is at (2, 3)
+P_4_6 : P_5_6 : P_4_7 : P_4_6, Vl_4_6_up, Vr_4_6_up
+* half rectangle pointing down whose top right corner is at (2.5, 3.5)
+P_5_7 : P_4_7 : P_5_6 : P_5_7, Vl_4_6_up, Vr_4_6_up
+* half rectangle pointing up whose lower left corner is at (2.5, 3)
+P_5_6 : P_6_6 : P_5_7 : P_5_6, Vl_5_6_up, Vr_5_6_up
+* half rectangle pointing down whose top right corner is at (3, 3.5)
+P_6_7 : P_5_7 : P_6_6 : P_6_7, Vl_5_6_up, Vr_5_6_up
+* half rectangle pointing up whose lower left corner is at (3, 3)
+P_6_6 : P_7_6 : P_6_7 : P_6_6, Vl_6_6_up, Vr_6_6_up
+* half rectangle pointing down whose top right corner is at (3.5, 3.5)
+P_7_7 : P_6_7 : P_7_6 : P_7_7, Vl_6_6_up, Vr_6_6_up
+* half rectangle pointing up whose lower left corner is at (3.5, 3)
+P_7_6 : P_8_6 : P_7_7 : P_7_6, Vl_7_6_up, Vr_7_6_up
+* half rectangle pointing down whose top right corner is at (4, 3.5)
+P_8_7 : P_7_7 : P_8_6 : P_8_7, Vl_7_6_up, Vr_7_6_up
+* half rectangle pointing up whose lower left corner is at (0, 3.5)
+P_0_7 : P_1_7 : P_0_8 : P_0_7, Vl_0_7_up, Vr_0_7_up
+* half rectangle pointing down whose top right corner is at (0.5, 4)
+P_1_8 : P_0_8 : P_1_7 : P_1_8, Vl_0_7_up, Vr_0_7_up
+* half rectangle pointing up whose lower left corner is at (0.5, 3.5)
+P_1_7 : P_2_7 : P_1_8 : P_1_7, Vl_1_7_up, Vr_1_7_up
+* half rectangle pointing down whose top right corner is at (1, 4)
+P_2_8 : P_1_8 : P_2_7 : P_2_8, Vl_1_7_up, Vr_1_7_up
+* half rectangle pointing up whose lower left corner is at (1, 3.5)
+P_2_7 : P_3_7 : P_2_8 : P_2_7, Vl_2_7_up, Vr_2_7_up
+* half rectangle pointing down whose top right corner is at (1.5, 4)
+P_3_8 : P_2_8 : P_3_7 : P_3_8, Vl_2_7_up, Vr_2_7_up
+* half rectangle pointing up whose lower left corner is at (1.5, 3.5)
+P_3_7 : P_4_7 : P_3_8 : P_3_7, Vl_3_7_up, Vr_3_7_up
+* half rectangle pointing down whose top right corner is at (2, 4)
+P_4_8 : P_3_8 : P_4_7 : P_4_8, Vl_3_7_up, Vr_3_7_up
+* half rectangle pointing up whose lower left corner is at (2, 3.5)
+P_4_7 : P_5_7 : P_4_8 : P_4_7, Vl_4_7_up, Vr_4_7_up
+* half rectangle pointing down whose top right corner is at (2.5, 4)
+P_5_8 : P_4_8 : P_5_7 : P_5_8, Vl_4_7_up, Vr_4_7_up
+* half rectangle pointing up whose lower left corner is at (2.5, 3.5)
+P_5_7 : P_6_7 : P_5_8 : P_5_7, Vl_5_7_up, Vr_5_7_up
+* half rectangle pointing down whose top right corner is at (3, 4)
+P_6_8 : P_5_8 : P_6_7 : P_6_8, Vl_5_7_up, Vr_5_7_up
+* half rectangle pointing up whose lower left corner is at (3, 3.5)
+P_6_7 : P_7_7 : P_6_8 : P_6_7, Vl_6_7_up, Vr_6_7_up
+* half rectangle pointing down whose top right corner is at (3.5, 4)
+P_7_8 : P_6_8 : P_7_7 : P_7_8, Vl_6_7_up, Vr_6_7_up
+* half rectangle pointing up whose lower left corner is at (3.5, 3.5)
+P_7_7 : P_8_7 : P_7_8 : P_7_7, Vl_7_7_up, Vr_7_7_up
+* half rectangle pointing down whose top right corner is at (4, 4)
+P_8_8 : P_7_8 : P_8_7 : P_8_8, Vl_7_7_up, Vr_7_7_up
+
+* End of spdifile

@@ -1,0 +1,25 @@
+* Created by the perl mspdi library from ./non_linear_1.mspdi
+
+
+Points:
+
+P_0_0. -5.000000, -5.000000
+P_1_0. 5.000000, -5.000000
+P_0_1. -5.000000, 5.000000
+P_1_1. 5.000000, 5.000000
+
+Vectors:
+
+Vl_0_0_up. 1.000000, -10.000000
+Vr_0_0_up. 1.000000, -10.000000
+Vl_0_0_down. 1.000000, -15.000000
+Vr_0_0_down. 1.000000, -15.000000
+
+Regions:
+
+* half rectangle pointing up whose lower left corner is at (-5, -5)
+P_0_0 : P_1_0 : P_0_1 : P_0_0, Vl_0_0_up, Vr_0_0_up
+* half rectangle pointing down whose top right corner is at (5, 5)
+P_1_1 : P_0_1 : P_1_0 : P_1_1, Vl_0_0_up, Vr_0_0_up
+
+* End of spdifile
