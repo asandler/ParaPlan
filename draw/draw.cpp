@@ -12,19 +12,81 @@
 using namespace std;
 using namespace sf;
 
-unordered_map<string, pair<double, double> > Vertices;
-unordered_map<string, pair<double, double> > Vectors;
+unordered_map<string, pair<float, float> > Vertices;
+unordered_map<string, pair<float, float> > Vectors;
 
-VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
-    VertexArray ans(Lines);
+float GetMagnitude(const Vector2f& v) {
+    return sqrt(v.x * v.x + v.y * v.y);
+}
+
+float Dot(const Vector2f& u, const Vector2f& v) {
+    return u.x * u.x + v.y * v.y;
+}
+
+Vector2f GetNormal(Vector2f v) {
+    return Vector2f(-v.y, v.x);
+}
+
+Vector2f Normalized(Vector2f v) {
+    return v / GetMagnitude(v);
+}
+
+VertexArray RegionVA(const vector<Vector2f>& points, Color color, float thickness) {
+    VertexArray ary(TrianglesStrip);
+
+    for (size_t i = 1; i < points.size() + 2; i++) {
+        Vector2f v0 = points[(i - 1) % points.size()];
+        Vector2f v1 = points[i % points.size()];
+        Vector2f v2 = points[(i + 1) % points.size()];
+
+        Vector2f v01 = Normalized(v1 - v0);
+        Vector2f v12 = Normalized(v2 - v1);
+
+        Vector2f d = GetNormal(v01 + v12);
+        float dot = Dot(d, d);
+
+        if (std::abs(dot) > 0.001) {
+            d *= thickness / 2.f / dot;
+        } else {
+            d = Normalized(GetNormal(v01));
+            d *= thickness / 2.f;
+        }
+
+        ary.append(Vertex(v1 + d, color));
+        ary.append(Vertex(v1 - d, color));
+    }
+
+    return ary;
+}
+
+VertexArray ArrowVA(const Vector2f& a, const Vector2f& b, Color color, float thickness) {
+    VertexArray ary(TrianglesStrip);
+
+    Vector2f d = Normalized(GetNormal(b - a));
+    d *= thickness / 2.f;
+
+    ary.append(Vertex(a + d, color));
+    ary.append(Vertex(a - d, color));
+    ary.append(Vertex(a + (b - a) * 0.7f + d, color));
+    ary.append(Vertex(a + (b - a) * 0.7f - d, color));
+
+    ary.append(Vertex(a + (b - a) * 1.f, color));
+    ary.append(Vertex(a + (b - a) * 0.7f + d * 3.f, color));
+    ary.append(Vertex(a + (b - a) * 0.7f - d * 3.f, color));
+
+    return ary;
+}
+
+vector<VertexArray> ConstructVertexArrayFromSPDI(const string& filename) {
+    vector<VertexArray> ans;
 
     string s;
     char state = 'n';
 
-    double maxX = -1e9;
-    double maxY = -1e9;
-    double minX = 1e9;
-    double minY = 1e9;
+    float maxX = -1e9;
+    float maxY = -1e9;
+    float minX = 1e9;
+    float minY = 1e9;
 
     ifstream spdiFile(filename);
     while (!spdiFile.eof()) {
@@ -40,11 +102,11 @@ VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
 
             //normalization to screen size
             for (auto it = Vertices.begin(); it != Vertices.end(); ++it) {
-                double aw = (SCREEN_WIDTH * 0.9) / (maxX - minX);
-                double bw = 0.05 * SCREEN_WIDTH - minX * aw;
+                float aw = (SCREEN_WIDTH * 0.9) / (maxX - minX);
+                float bw = 0.05 * SCREEN_WIDTH - minX * aw;
 
-                double ah = (SCREEN_HEIGHT * 0.9) / (maxY - minY);
-                double bh = 0.05 * SCREEN_HEIGHT - minY * ah;
+                float ah = (SCREEN_HEIGHT * 0.9) / (maxY - minY);
+                float bh = 0.05 * SCREEN_HEIGHT - minY * ah;
 
                 it->second.first = aw * it->second.first + bw;
                 it->second.second = ah * it->second.second + bh;
@@ -59,8 +121,8 @@ VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
             case 'p': {
                 string id = s.substr(0, s.find('.'));
                 string coords = s.substr(id.length() + 2);
-                double coord1 = stod(coords.substr(0, coords.find(',')));
-                double coord2 = stod(coords.substr(coords.find(',') + 2));
+                float coord1 = stod(coords.substr(0, coords.find(',')));
+                float coord2 = stod(coords.substr(coords.find(',') + 2));
                 Vertices[id] = make_pair(coord1, -coord2);
 
                 maxX = max(maxX, coord1);
@@ -73,8 +135,8 @@ VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
             case 'v': {
                 string id = s.substr(0, s.find('.'));
                 string coords = s.substr(id.length() + 2);
-                double coord1 = stod(coords.substr(0, coords.find(',')));
-                double coord2 = stod(coords.substr(coords.find(',') + 2));
+                float coord1 = stod(coords.substr(0, coords.find(',')));
+                float coord2 = stod(coords.substr(coords.find(',') + 2));
                 Vectors[id] = make_pair(coord1, coord2);
 
                 break;
@@ -91,54 +153,43 @@ VertexArray ConstructVertexArrayFromSPDI(const string& filename) {
                 string v1 = s.substr(0, s.find(','));
                 string v2 = s.substr(v1.length() + 2);
 
-                double localMaxX = -1e9;
-                double localMaxY = -1e9;
-                double localMinX = 1e9;
-                double localMinY = 1e9;
+                float localMaxX = -1e9;
+                float localMaxY = -1e9;
+                float localMinX = 1e9;
+                float localMinY = 1e9;
 
-                double xSum = 0;
-                double ySum = 0;
+                float xSum = 0;
+                float ySum = 0;
 
+                vector<Vector2f> regionVertices;
                 for (size_t i = 0; i < regVert.size() - 1; ++i) {
-                    double coord1 = Vertices[regVert[i]].first;
-                    double coord2 = Vertices[regVert[i]].second;
-                    double coord3 = Vertices[regVert[i + 1]].first;
-                    double coord4 = Vertices[regVert[i + 1]].second;
-
-                    ans.append(Vertex(Vector2f(coord1, coord2), sf::Color::Black));
-                    ans.append(Vertex(Vector2f(coord3, coord4), sf::Color::Black));
+                    float coord1 = Vertices[regVert[i]].first;
+                    float coord2 = Vertices[regVert[i]].second;
+                    regionVertices.push_back(Vector2f(coord1, coord2));
 
                     localMaxX = max(localMaxX, coord1);
-                    localMinX = min(localMinX, coord1);
                     localMaxY = max(localMaxY, coord2);
+                    localMinX = min(localMinX, coord1);
                     localMinY = min(localMinY, coord2);
 
                     xSum += coord1;
                     ySum += coord2;
                 }
 
-                ans.append(Vertex(Vector2f(Vertices[regVert.back()].first, Vertices[regVert.back()].second), sf::Color::Black));
-                ans.append(Vertex(Vector2f(Vertices[regVert[0]].first, Vertices[regVert[0]].second), sf::Color::Black));
-
-                localMaxX = max(localMaxX, Vertices[regVert.back()].first);
-                localMinX = min(localMinX, Vertices[regVert.back()].first);
-                localMaxY = max(localMaxY, Vertices[regVert.back()].second);
-                localMinY = min(localMinY, Vertices[regVert.back()].second);
+                ans.push_back(RegionVA(regionVertices, sf::Color::Black, 5));
 
                 Vector2f center(xSum / (regVert.size() - 1), ySum / (regVert.size() - 1));
 
-                double lenCoef1 = ((localMaxX - localMinX) + (localMaxY - localMinY)) / 16;
-                double lenCoef2 = lenCoef1;
+                float lenCoef1 = ((localMaxX - localMinX) + (localMaxY - localMinY)) / 16;
+                float lenCoef2 = lenCoef1;
                 lenCoef1 /= sqrt(Vectors[v1].first * Vectors[v1].first + Vectors[v1].second * Vectors[v1].second);
                 lenCoef2 /= sqrt(Vectors[v2].first * Vectors[v2].first + Vectors[v2].second * Vectors[v2].second);
 
                 Vector2f vec1(Vectors[v1].first * lenCoef1, -Vectors[v1].second * lenCoef1);
                 Vector2f vec2(Vectors[v2].first * lenCoef2, -Vectors[v2].second * lenCoef2);
 
-                ans.append(Vertex(center, sf::Color::Blue));
-                ans.append(Vertex(center + vec1, sf::Color::Blue));
-                ans.append(Vertex(center, sf::Color::Red));
-                ans.append(Vertex(center + vec2, sf::Color::Red));
+                ans.push_back(ArrowVA(center - ((vec1 + vec2) / 2.f), center + vec1, sf::Color::Red, 3));
+                ans.push_back(ArrowVA(center - ((vec1 + vec2) / 2.f), center + vec2, sf::Color::Blue, 3));
 
                 break;
             }
@@ -159,7 +210,7 @@ int main(int argc, char** argv) {
         cerr << "argument missing: SPDI file" << endl;
         return 1;
     }
-    VertexArray lines = ConstructVertexArrayFromSPDI(argv[1]);
+    vector<VertexArray> arrays = ConstructVertexArrayFromSPDI(argv[1]);
 
     Font arialFont;
     if (!arialFont.loadFromFile("/usr/share/fonts/truetype/msttcorefonts/arial.ttf")) {
@@ -168,7 +219,7 @@ int main(int argc, char** argv) {
             return 1;
         }
     }
-    
+
     vector<Text> verticesNumbers;
 
     for (const auto& v : Vertices) {
@@ -177,7 +228,7 @@ int main(int argc, char** argv) {
         numberText.setString(v.first);
         numberText.setFillColor(sf::Color::Black);
         numberText.setCharacterSize(12);
-        numberText.setPosition(v.second.first, v.second.second);
+        numberText.setPosition(v.second.first + 2, v.second.second + 2);
         verticesNumbers.push_back(numberText);
     }
 
@@ -190,7 +241,9 @@ int main(int argc, char** argv) {
         }
 
         window.clear(Color::White);
-        window.draw(lines);
+        for (size_t i = 0; i < arrays.size(); ++i) {
+            window.draw(arrays[i]);
+        }
 
         if ((argc == 2) || (argc > 2 && string(argv[2]) != "nonumbers")) {
             for (const auto& text : verticesNumbers) {
