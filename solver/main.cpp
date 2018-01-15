@@ -22,6 +22,8 @@ void PrintUsage() {
     cerr << "    --spdi path/to/spdi/file" << endl;
     cerr << "    --task path/to/reachability/task" << endl;
     cerr << "    --threads thread_number (optional, default = 1)" << endl;
+    cerr << "    --strict (optional): do not allow dynamics collision and parallel flow" << endl;
+    cerr << "    --debug (optional): print debug information" << endl;
 }
 
 int main(int argc, char** argv) {

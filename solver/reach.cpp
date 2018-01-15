@@ -204,7 +204,9 @@ void* DFSSignaturesExploration(void* threadArguments) {
         Answer = true;
         pthread_mutex_unlock(&AnswerMutex);
 
-        print_stack(depth);
+        if (Debug) {
+            print_stack(depth);
+        }
         goto exit;
     }
 
@@ -254,7 +256,9 @@ void* DFSSignaturesExploration(void* threadArguments) {
             Answer = true;
             pthread_mutex_unlock(&AnswerMutex);
 
-            print_stack(depth);
+            if (Debug) {
+                print_stack(depth);
+            }
             goto exit;
         } else {
             for (const auto& im : res.second) {

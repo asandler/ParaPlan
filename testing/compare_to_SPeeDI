@@ -1,10 +1,10 @@
-$ time for i in $(seq 1 100); do ./task_generator example.spdi $i > example.task; ./solver example.spdi example.task; done > answers_1
+$ time for i in $(seq 1 100); do ./task_generator example.spdi $i > example.task; ./paraplan example.spdi example.task; done > answers_1
 
 real    0m1.151s
 user    0m0.392s
 sys     0m0.340s
 
-$ time for i in $(seq 1 100); do ./reachable example.spdi $(./task_generator_2 example.spdi $i) | tail -n1 ; done > answers_2
+$ time for i in $(seq 1 100); do ./speedi example.spdi $(./task_generator_2 example.spdi $i) | tail -n1 ; done > answers_2
     
 real    1m16.857s
 user    1m16.169s
@@ -16,13 +16,13 @@ $ paste answers_1 answers_2 | sort | uniq -c
       4 1       0
      23 1       1
 
-$ time for i in $(seq 1 1000); do ./task_generator example.spdi $i > example.task; ./solver example.spdi example.task; done > answers_3
+$ time for i in $(seq 1 1000); do ./task_generator example.spdi $i > example.task; ./paraplan example.spdi example.task; done > answers_3
  
 real    0m9.804s
 user    0m2.932s
 sys     0m2.052s
 
-$ time for i in $(seq 1 1000); do ./reachable example.spdi $(./task_generator_2 example.spdi $i) | tail -n1 ; done > answers_4
+$ time for i in $(seq 1 1000); do ./speedi example.spdi $(./task_generator_2 example.spdi $i) | tail -n1 ; done > answers_4
 
 real    18m40.828s
 user    18m33.754s
