@@ -5,9 +5,9 @@ set key left top
 set xlabel "Number of regions"
 
 set output 'images/misc.png'
-plot './results/misc' using 2:3 with lines, './results/misc' using 2:5 with lines, './results/misc' using 2:7 with lines, './results/misc' using 2:9 with lines
+plot './results/misc' using 2:3 with lines, './results/misc' using 2:5 with lines, './results/misc' using 2:7 with lines
 set output 'images/misc-top.png'
-plot './results/misc' using 2:4 with lines, './results/misc' using 2:6 with lines, './results/misc' using 2:8 with lines, './results/misc' using 2:10 with lines
+plot './results/misc' using 2:4 with lines, './results/misc' using 2:6 with lines, './results/misc' using 2:8 with lines
 
 set output 'images/non-linear.png'
 plot './results/non_linear' using 2:3 with lines, './results/non_linear' using 2:4 with lines
