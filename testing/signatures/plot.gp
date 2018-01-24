@@ -3,6 +3,7 @@ set term png truecolor rounded size 800,600 lw 2
 set logscale y
 set key left top
 set xlabel "Number of regions"
+set ylabel "Edge signatures cut-off, times"
 
 set output 'images/misc.png'
 plot './results/misc' using 2:3 with lines, './results/misc' using 2:5 with lines, './results/misc' using 2:7 with lines
